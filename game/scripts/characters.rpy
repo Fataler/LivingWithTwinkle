@@ -13,7 +13,7 @@ image ctc_rotate:
 define ctc_indicator = Animation("ctc_rotate")
 
 # Определение персонажей
-define fe = Character("Феликс", 
+define F = Character("Феликс", 
     what_prefix="\"",
     what_suffix="\"",
     ctc=ctc_indicator,      
@@ -22,7 +22,43 @@ define fe = Character("Феликс",
     what_slow_abortable=False
 )
 
-define se = Character("Секретарь", 
+define Fm = Character("Феликс", 
+    what_prefix="{i}*",
+    what_suffix="*{/i} ",
+    ctc=ctc_indicator,      
+    ctc_position="nestled",
+    what_slow_cps=30,
+    what_slow_abortable=False
+)
+
+define S = Character("Секретарь", 
+    what_prefix="\"",
+    what_suffix="\"",
+    ctc=ctc_indicator,
+    ctc_position="nestled",
+    what_slow_cps=30,
+    what_slow_abortable=False
+)
+
+define K= Character("Клементина", 
+    what_prefix="\"",
+    what_suffix="\"",
+    ctc=ctc_indicator,
+    ctc_position="nestled",
+    what_slow_cps=30,
+    what_slow_abortable=False
+)
+
+define R1 = Character("Аркан", 
+    what_prefix="\"",
+    what_suffix="\"",
+    ctc=ctc_indicator,
+    ctc_position="nestled",
+    what_slow_cps=30,
+    what_slow_abortable=False
+)
+
+define R2 = Character("Мундштук", 
     what_prefix="\"",
     what_suffix="\"",
     ctc=ctc_indicator,
@@ -62,7 +98,7 @@ layeredimage alice:
         attribute talking:
             "images/sprites/alice/normal.png"
 
-# Определение изображений персонажа Феликса
+# Определение изображений Феликса
 layeredimage f:
     # Базовые состояния
     group state:
@@ -73,4 +109,33 @@ layeredimage f:
         attribute sad:
             "images/characters/felix/sad.png"
 
-#image f = Placeholder("boy")
+# Определение изображений Феликса
+# layeredimage f:
+#     group pose:
+#         attribute normal default
+#         attribute angry
+#         attribute sad
+
+#     group state:
+#         attribute base default:
+#             "images/characters/felix/normal.png"
+#         attribute talking:
+#             "images/characters/felix/normal_talking.png"
+#         attribute sad:
+#             "images/characters/felix/normal_sad.png"
+
+#     group if_angry:
+#         attribute base if_any "angry":
+#             "images/characters/felix/angry.png"
+#         attribute talking if_any "angry":
+#             "images/characters/felix/angry_talking.png"
+#         attribute sad if_any "angry":
+#             "images/characters/felix/angry_sad.png"
+
+#     group if_sad:
+#         attribute base if_any "sad":
+#             "images/characters/felix/sad.png"
+#         attribute talking if_any "sad":
+#             "images/characters/felix/sad_talking.png"
+#         attribute angry if_any "sad":
+#             "images/characters/felix/sad_angry.png"
