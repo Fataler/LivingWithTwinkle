@@ -340,6 +340,16 @@ style navigation_button:
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
 
+transform hover_scale:
+    rotate 0
+    on idle:    
+        parallel:
+            linear 0.1 xzoom 1.0 yzoom 1.0 rotate 0
+            #linear 0.1 rotate 0
+    on hover:
+        parallel:
+            linear 0.1 xzoom 1.1 yzoom 1.1 rotate -10
+            #linear 0.1 rotate 10
 
 ## Экран главного меню #########################################################
 ##
@@ -373,6 +383,16 @@ screen main_menu():
 
             text "[config.version]":
                 style "main_menu_version"
+
+    use real_clock
+
+    imagebutton idle "gui/chapel.jpg": #im.Scale("gui/chapel.jpg", 64, 64):
+        # hover im.MatrixColor(im.Scale("gui/chapel.jpg", 64, 64),
+        #     im.matrix.brightness(0.20))
+        action OpenURL('https://vk.com/chapel_jam')
+        xalign 0.3
+        yalign 0.9
+        at hover_scale
 
 
 style main_menu_frame is empty
