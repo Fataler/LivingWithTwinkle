@@ -10,6 +10,13 @@ init python:
             diff -= 360
         return current + diff
 
+    class ResetAnimation(Action):
+        def __init__(self, game):
+            self.game = game
+            
+        def __call__(self):
+            self.game.is_animating = False
+
     class PipeGame:
         def __init__(self):
             self.size = 6
@@ -18,6 +25,7 @@ init python:
             self.current_state = self._generate_initial_state()
             self.debug = False
             self.current_rotations = [[0 for _ in range(self.size)] for _ in range(self.size)]
+            self.is_animating = False
         
         def _generate_solution(self):
             solution = [
@@ -44,7 +52,7 @@ init python:
         def get_pipe_rotation(self, pipe_type):
             # Возвращаем угол поворота в градусах для спрайта
             if pipe_type in PIPE_TYPES["straight"]:
-                return 90 if pipe_type == "|" else 0
+                return PIPE_TYPES["straight"].index(pipe_type) * 90
             elif pipe_type in PIPE_TYPES["corner"]:
                 return PIPE_TYPES["corner"].index(pipe_type) * 90
             return 0
@@ -58,6 +66,10 @@ init python:
             return None, 0
         
         def rotate_pipe(self, x, y):
+            if self.is_animating:
+                return
+                
+            self.is_animating = True
             current = self.current_state[x][y]
             
             if current in PIPE_TYPES["straight"]:
@@ -76,29 +88,6 @@ init python:
                         return False
             return True
 
-transform pipe_rotate(old_rotation, new_rotation):
-    rotate old_rotation
-    linear 0.2 rotate get_shortest_rotation(old_rotation, new_rotation)
-
-transform success_appear:
-    alpha 0.0 zoom 1.5 yoffset 100
-    parallel:
-        ease 0.5 alpha 1.0
-    parallel:
-        ease 0.5 zoom 1.0 yoffset 0
-        ease 0.15 zoom 1.1
-        ease 0.15 zoom 1.0
-
-transform success_text:
-    alpha 0.0 zoom 1.5
-    pause 0.3
-    parallel:
-        ease 0.3 alpha 1.0
-    parallel:
-        ease 0.3 zoom 1.0
-        ease 0.1 zoom 1.2
-        ease 0.1 zoom 1.0
-
 # Экран
 screen pipe_game():
     modal True
@@ -106,6 +95,10 @@ screen pipe_game():
     default game = PipeGame()
     default show_success = False
     default success_timer = 0.0
+    default animation_timer = 0.0
+    
+    if animation_timer > 0.0:
+        timer animation_timer action [SetScreenVariable("animation_timer", 0.0), SetField(game, "is_animating", False)]
     
     frame:
         xalign 0.5
@@ -118,7 +111,7 @@ screen pipe_game():
             
             # Сетка
             grid game.size game.size:
-                spacing 5
+                spacing -5
                 for i in range(game.size):
                     for j in range(game.size):
                         if game.current_state[i][j]:
@@ -133,7 +126,8 @@ screen pipe_game():
                                 ysize 100
                                 action [
                                     Function(game.rotate_pipe, i, j),
-                                    SetDict(game.current_rotations[i], j, game.get_pipe_rotation(game.current_state[i][j]))
+                                    SetDict(game.current_rotations[i], j, game.get_pipe_rotation(game.current_state[i][j])),
+                                    SetScreenVariable("animation_timer", 0.4)
                                 ]
                                 
                                 if game.debug and is_in_solution:
@@ -167,6 +161,30 @@ screen pipe_game():
             background "#0008"
             
             text "Успех!" at success_text size 75 color "#fff" xalign 0.5 yalign 0.5
+
+transform success_appear:
+    alpha 0.0 zoom 1.5 yoffset 100
+    parallel:
+        ease 0.5 alpha 1.0
+    parallel:
+        ease 0.5 zoom 1.0 yoffset 0
+        ease 0.15 zoom 1.1
+        ease 0.15 zoom 1.0
+
+transform success_text:
+    alpha 0.0 zoom 1.5
+    pause 0.3
+    parallel:
+        ease 0.3 alpha 1.0
+    parallel:
+        ease 0.3 zoom 1.0
+        ease 0.1 zoom 1.2
+        ease 0.1 zoom 1.0
+
+transform pipe_rotate(old_rotation, new_rotation):
+    rotate old_rotation
+    linear 0.2 xzoom 0.9 yzoom 0.9
+    linear 0.2 rotate get_shortest_rotation(old_rotation, new_rotation) xzoom 1.0 yzoom 1.0
 
 # Метка для тестирования
 label test_pipe_game:

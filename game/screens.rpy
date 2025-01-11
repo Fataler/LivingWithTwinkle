@@ -305,6 +305,8 @@ screen navigation():
             textbutton _("Сохранить") action ShowMenu("save")
 
         textbutton _("Загрузить") action ShowMenu("load")
+        
+        textbutton _("Достижения") action ShowMenu("achievements_screen")
 
         textbutton _("Настройки") action ShowMenu("preferences")
 
@@ -617,7 +619,7 @@ screen load():
 
 screen file_slots(title):
 
-    default page_name_value = FilePageNameInputValue(pattern=_("{} страница"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
+    default page_name_value = FilePageNameInputValue(pattern=_("Сохранения"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"), default=False)
 
     use game_menu(title):
 
@@ -634,7 +636,7 @@ screen file_slots(title):
 
                 key_events True
                 xalign 0.5
-                action page_name_value.Toggle()
+                #action page_name_value.Toggle()
 
                 input:
                     style "page_label_text"
@@ -684,17 +686,17 @@ screen file_slots(title):
                     key "save_page_prev" action FilePagePrevious()
 
                     if config.has_autosave:
-                        textbutton _("{#auto_page}А") action FilePage("auto")
+                        textbutton _("{#auto_page}Авто") action FilePage("auto")
 
                     if config.has_quicksave:
-                        textbutton _("{#quick_page}Б") action FilePage("quick")
+                        textbutton _("{#quick_page}Быстрые") action FilePage("quick")
 
-                    ## range(1, 10) задаёт диапазон значений от 1 до 9.
-                    for page in range(1, 10):
-                        textbutton "[page]" action FilePage(page)
+                    ## range(1, 2) задаёт диапазон значений от 1 до 2.
+                    for page in range(1, max_save_pages + 1):
+                        textbutton "Основные" action FilePage(page)
 
-                    textbutton _(">") action FilePageNext()
-                    key "save_page_next" action FilePageNext()
+                    textbutton _(">") action FilePageNext(max = max_save_pages)
+                    key "save_page_next" action FilePageNext(max = max_save_pages)
 
                 if config.has_sync:
                     if CurrentScreenName() == "save":

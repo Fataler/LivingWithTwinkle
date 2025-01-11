@@ -130,6 +130,12 @@ default preferences.text_cps = 0
 default preferences.afm_time = 15
 
 
+## Максимальное количество страниц сохранений
+
+define max_save_pages = 1
+
+define config.has_quicksave = False
+define config.has_sync = False
 ## Директория сохранений #######################################################
 ##
 ## Контролирует зависимое от платформы место, куда Ren'Py будет складывать файлы
