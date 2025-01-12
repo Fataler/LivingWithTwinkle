@@ -64,7 +64,7 @@ screen achievements_screen():
                                 hbox:
                                     spacing 5
                                     text ach.name style "achievement_name"
-                                    text "✓" style "achievement_check"
+                                    text "✔" style "achievement_check"
                                 text ach.description style "achievement_description"
 
             if locked_achievements:
@@ -135,7 +135,7 @@ style achievement_description:
 
 style achievements_group_header:
     size 36
-    color "#ffffff"
+    color "#000000"
     #padding (0, 20, 0, 10)
 
 style achievement_popup_frame:

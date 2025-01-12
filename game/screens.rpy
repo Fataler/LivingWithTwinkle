@@ -279,153 +279,6 @@ style quick_button_text:
 ## Экраны Главного и Игрового меню
 ################################################################################
 
-## Экран навигации #############################################################
-##
-## Этот экран включает в себя главное и игровое меню, и обеспечивает навигацию к
-## другим меню и к началу игры.
-
-screen navigation():
-
-    vbox:
-        style_prefix "navigation"
-
-        xpos gui.navigation_xpos
-        yalign 0.5
-
-        spacing gui.navigation_spacing
-
-        if main_menu:
-
-            textbutton _("Начать") action Start()
-
-        else:
-
-            textbutton _("История") action ShowMenu("history")
-
-            textbutton _("Сохранить") action ShowMenu("save")
-
-        textbutton _("Загрузить") action ShowMenu("load")
-        
-        textbutton _("Достижения") action ShowMenu("achievements_screen")
-
-        textbutton _("Настройки") action ShowMenu("preferences")
-
-        if _in_replay:
-
-            textbutton _("Завершить повтор") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Главное меню") action MainMenu()
-
-        textbutton _("Об игре") action ShowMenu("about")
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Помощь не необходима и не относится к мобильным устройствам.
-            textbutton _("Помощь") action ShowMenu("help")
-
-        if renpy.variant("pc"):
-
-            ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
-            ## версии.
-            textbutton _("Выход") action Quit(confirm=not main_menu)
-
-
-style navigation_button is gui_button
-style navigation_button_text is gui_button_text
-
-style navigation_button:
-    size_group "navigation"
-    properties gui.button_properties("navigation_button")
-
-style navigation_button_text:
-    properties gui.text_properties("navigation_button")
-
-transform hover_scale:
-    rotate 0
-    on idle:    
-        parallel:
-            linear 0.1 xzoom 1.0 yzoom 1.0 rotate 0
-            #linear 0.1 rotate 0
-    on hover:
-        parallel:
-            linear 0.1 xzoom 1.1 yzoom 1.1 rotate -10
-            #linear 0.1 rotate 10
-
-## Экран главного меню #########################################################
-##
-## Используется, чтобы показать главное меню после запуска игры.
-##
-## https://www.renpy.org/doc/html/screen_special.html#main-menu
-
-screen main_menu():
-
-    ## Этот тег гарантирует, что любой другой экран с тем же тегом будет
-    ## заменять этот.
-    tag menu
-
-    add gui.main_menu_background
-
-    ## Эта пустая рамка затеняет главное меню.
-    frame:
-        style "main_menu_frame"
-
-    ## Оператор use включает отображение другого экрана в данном. Актуальное
-    ## содержание главного меню находится на экране навигации.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
-
-    use real_clock
-
-    imagebutton idle "gui/chapel.jpg": #im.Scale("gui/chapel.jpg", 64, 64):
-        # hover im.MatrixColor(im.Scale("gui/chapel.jpg", 64, 64),
-        #     im.matrix.brightness(0.20))
-        action OpenURL('https://vk.com/chapel_jam')
-        xalign 0.3
-        yalign 0.9
-        at hover_scale
-
-
-style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
-
-style main_menu_frame:
-    xsize 420
-    yfill True
-
-    background "gui/overlay/main_menu.png"
-
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
-
-style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
-
-style main_menu_title:
-    properties gui.text_properties("title")
-
-style main_menu_version:
-    properties gui.text_properties("version")
-
-
 ## Экран игрового меню #########################################################
 ##
 ## Всё это показывает основную, обобщённую структуру экрана игрового меню. Он
@@ -516,7 +369,7 @@ style game_menu_scrollbar is gui_vscrollbar
 style game_menu_label is gui_label
 style game_menu_label_text is gui_label_text
 
-style return_button is navigation_button
+style return_button is gui_button
 style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
@@ -766,12 +619,18 @@ screen preferences():
                         textbutton _("Оконный") action Preference("display", "window")
                         textbutton _("Полный") action Preference("display", "fullscreen")
 
+                # vbox:
+                #     style_prefix "check"
+                #     label _("Пропуск")
+                #     textbutton _("Всего текста") action Preference("skip", "toggle")
+                #     textbutton _("После выборов") action Preference("after choices", "toggle")
+                #     textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
+
                 vbox:
                     style_prefix "check"
                     label _("Пропуск")
-                    textbutton _("Всего текста") action Preference("skip", "toggle")
-                    textbutton _("После выборов") action Preference("after choices", "toggle")
-                    textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
+                    textbutton _("Прочитанный текст") action Preference("skip", "seen")
+                    textbutton _("Весь текст") action Preference("skip", "all")
 
                 ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
                 ## могут быть добавлены сюда для добавления новых настроек.

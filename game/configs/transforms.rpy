@@ -105,3 +105,14 @@ transform flip:
 
 transform flip_back:
     xzoom 1
+
+transform menu_board_drop:
+    ypos -900
+    easein 0.5 ypos 0
+    easeout 0.2 ypos -50
+    easein 0.15 ypos 0
+
+transform menu_items_appear:
+    alpha 0.0
+    pause 0.7
+    linear 0.3 alpha 1.0
