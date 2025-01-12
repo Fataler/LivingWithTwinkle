@@ -12,6 +12,17 @@ image ctc_rotate:
 
 define ctc_indicator = Animation("ctc_rotate")
 
+image ctc_mind:
+    "gui/ctc_mind.png"
+    size (50, 50)
+    anchor (0.5, 0.5)  # центр вращения
+    alpha 1
+    linear 2 alpha 0.6
+    linear 2 alpha 1
+    repeat
+
+define ctc_mind_indicator = Animation("ctc_mind")
+
 # Определение персонажей
 define F = Character("Феликс", 
     what_prefix="\"",
@@ -22,10 +33,10 @@ define F = Character("Феликс",
     what_slow_abortable=False
 )
 
-define Fm = Character("Феликс", 
+define F_m = Character("Феликс", 
     what_prefix="{i}*",
     what_suffix="*{/i} ",
-    ctc=ctc_indicator,      
+    ctc=ctc_mind_indicator,      
     ctc_position="nestled",
     what_slow_cps=30,
     what_slow_abortable=False
@@ -131,6 +142,15 @@ layeredimage f:
             "images/characters/felix/sad_angry.png"
 
 # Клементина
+layeredimage k:
+    group pose:
+        attribute normal
+
+    group state:
+        attribute base default:
+            "images/characters/klem/normal.png"
+        attribute shvabra:
+            "images/characters/klem/shvabra_1.png"
 
 # Секретарь
 image s:

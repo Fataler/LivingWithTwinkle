@@ -5,8 +5,13 @@ label start:
     #     "Трубы":
     #         jump test_pipe_game
     #     "Cюжет":
-    #         jump chapter1
+    #jump chapter1
+
+    window hide
+    #$ renpy.call_screen("credits")
     
+    jump chapter1
+
     scene bg room
 
     show f normal glass at left
@@ -15,15 +20,13 @@ label start:
     show f normal base at face_left, exit_left(3.0)
     F "Сняв очки, я ухожу медленно"
 
-    #call screen time_passed("На следующий день...")
-
+    scene bg_white with Dissolve(1)
+    #pause(1)
+    #scene bg castle with Dissolve(1)
     show f normal cat at face_left, enter_right(3.0)
     F "я вернулся c котом"
+    F "И прошел всю игру..."
 
-    hide f
-    F "пропал"
-
-    show f sad at face_left, enter_right(1)
-    F "я вернулся быстро"
+    call screen credits
 
     return
