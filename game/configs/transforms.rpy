@@ -1,15 +1,11 @@
 #common
-transform left:
-    xalign 0.2
+transform c_left:
+    xalign 0.1
     yalign 1.0
 
-transform right:
-    xalign 0.8
+transform c_right:
+    xalign 0.95
     yalign 1.0
-
-# Отзеркаливание
-transform flip:
-    xzoom -1.0
 
 transform face_left:
     xzoom -1.0
@@ -59,4 +55,22 @@ transform enter_right(time=1.0):
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
-#ch1
+transform step_right(steps=1, step_time=0.3, step_size=50):
+    parallel:
+        xoffset 0
+        linear steps * step_time xoffset steps * step_size
+    parallel:
+        yoffset 0
+        ease step_time/2 yoffset -10
+        ease step_time/2 yoffset 0
+        repeat steps
+
+transform step_left(steps=1, step_time=0.3, step_size=50):
+    parallel:
+        xoffset 0
+        linear steps * step_time xoffset steps * -step_size
+    parallel:
+        yoffset 0
+        ease step_time/2 yoffset -10
+        ease step_time/2 yoffset 0
+        repeat steps

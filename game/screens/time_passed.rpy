@@ -3,7 +3,7 @@
 ## Ипользуется для перебивки между сценами.
 ##
 
-transform time_passed_transform:
+transform show_screen_transform:
     on show:
         parallel:
             alpha 0.0
@@ -68,7 +68,7 @@ screen time_passed(text="Прошло времени..."):
     fixed:
         xfill True
         yfill True
-        at time_passed_transform
+        at show_screen_transform
         
         add Solid("#121212")
         # add "gui/overlay/ctc.png"

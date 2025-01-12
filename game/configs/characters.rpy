@@ -98,44 +98,45 @@ layeredimage alice:
         attribute talking:
             "images/sprites/alice/normal.png"
 
-# Определение изображений Феликса
+#Определение изображений Феликса
 layeredimage f:
-    # Базовые состояния
-    group state:
+    group pose:
         attribute normal default:
             "images/characters/felix/normal.png"
-        attribute angry:
+        attribute angry
+        attribute sad
+
+    group state:
+        attribute base default:
+            "images/characters/felix/normal.png"
+        attribute glass:
+            "images/characters/felix/glass.png"
+        attribute cat:
+            "images/characters/felix/cat.png"
+
+    group if_angry:
+        attribute base if_any "angry":
             "images/characters/felix/angry.png"
-        attribute sad:
+        attribute glass if_any "angry":
+            "images/characters/felix/angry_talking.png"
+        attribute cat if_any "angry":
+            "images/characters/felix/angry_cat.png"
+
+    group if_sad:
+        attribute base if_any "sad":
             "images/characters/felix/sad.png"
+        attribute glass if_any "sad":
+            "images/characters/felix/sad_talking.png"
+        attribute cat if_any "sad":
+            "images/characters/felix/sad_angry.png"
 
-# Определение изображений Феликса
-# layeredimage f:
-#     group pose:
-#         attribute normal default
-#         attribute angry
-#         attribute sad
+# Клементина
 
-#     group state:
-#         attribute base default:
-#             "images/characters/felix/normal.png"
-#         attribute talking:
-#             "images/characters/felix/normal_talking.png"
-#         attribute sad:
-#             "images/characters/felix/normal_sad.png"
+# Секретарь
+image s:
+    "images/characters/secretary/normal.png"
 
-#     group if_angry:
-#         attribute base if_any "angry":
-#             "images/characters/felix/angry.png"
-#         attribute talking if_any "angry":
-#             "images/characters/felix/angry_talking.png"
-#         attribute sad if_any "angry":
-#             "images/characters/felix/angry_sad.png"
 
-#     group if_sad:
-#         attribute base if_any "sad":
-#             "images/characters/felix/sad.png"
-#         attribute talking if_any "sad":
-#             "images/characters/felix/sad_talking.png"
-#         attribute angry if_any "sad":
-#             "images/characters/felix/sad_angry.png"
+# Бандит 1
+
+# Бандит 2

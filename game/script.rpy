@@ -1,19 +1,24 @@
 # Игра начинается здесь:
 label start:
 
-    jump test_pipe_game
+    # menu:
+    #     "Трубы":
+    #         jump test_pipe_game
+    #     "Cюжет":
+    #         jump chapter1
+    
     scene bg room
 
-    show f normal at left
-    F "Он шел{w}, шел{w}, шел..."
+    show f normal glass at left
+    F "Он шел{w}, шел{w}, шел... В своих крутых очках"
 
-    show f angry at face_left, exit_left(3.0)
-    F "я ухожу медленно"
+    show f normal base at face_left, exit_left(3.0)
+    F "Сняв очки, я ухожу медленно"
 
-    call screen time_passed("На следующий день...")
+    #call screen time_passed("На следующий день...")
 
-    show f normal at face_left, enter_right(3.0)
-    F "я вернулся медленно"
+    show f normal cat at face_left, enter_right(3.0)
+    F "я вернулся c котом"
 
     hide f
     F "пропал"
