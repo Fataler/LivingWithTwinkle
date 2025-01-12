@@ -99,3 +99,9 @@ transform panic_run(times=4, run_time=0.5, distance=150):
         ease run_time/2 yoffset 10
         ease run_time/2 yoffset 0
         repeat (times * 2)
+
+transform flip:
+    xzoom -1
+
+transform flip_back:
+    xzoom 1

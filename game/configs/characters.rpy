@@ -25,8 +25,8 @@ define ctc_mind_indicator = Animation("ctc_mind")
 
 # Определение персонажей
 define F = Character("Феликс", 
-    what_prefix="\"",
-    what_suffix="\"",
+    what_prefix="",
+    what_suffix="",
     ctc=ctc_indicator,      
     ctc_position="nestled",
     what_slow_cps=30,
@@ -34,8 +34,8 @@ define F = Character("Феликс",
 )
 
 define F_m = Character("Феликс", 
-    what_prefix="{i}*",
-    what_suffix="*{/i} ",
+    what_prefix="{i}(",
+    what_suffix="){/i} ",
     ctc=ctc_mind_indicator,      
     ctc_position="nestled",
     what_slow_cps=30,
@@ -43,17 +43,17 @@ define F_m = Character("Феликс",
 )
 
 define S = Character("Секретарь", 
-    what_prefix="\"",
-    what_suffix="\"",
+    what_prefix="",
+    what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
     what_slow_cps=30,
     what_slow_abortable=False
 )
 
-define K= Character("Клементина", 
-    what_prefix="\"",
-    what_suffix="\"",
+define K = Character("Клементина", 
+    what_prefix="",
+    what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
     what_slow_cps=30,
@@ -61,8 +61,8 @@ define K= Character("Клементина",
 )
 
 define R1 = Character("Аркан", 
-    what_prefix="\"",
-    what_suffix="\"",
+    what_prefix="",
+    what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
     what_slow_cps=30,
@@ -70,8 +70,8 @@ define R1 = Character("Аркан",
 )
 
 define R2 = Character("Мундштук", 
-    what_prefix="\"",
-    what_suffix="\"",
+    what_prefix="",
+    what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
     what_slow_cps=30,
