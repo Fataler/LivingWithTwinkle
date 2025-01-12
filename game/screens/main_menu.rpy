@@ -13,9 +13,7 @@ screen main_menu():
 
     use real_clock
 
-    imagebutton idle "gui/chapel.jpg": #im.Scale("gui/chapel.jpg", 64, 64):
-        # hover im.MatrixColor(im.Scale("gui/chapel.jpg", 64, 64),
-        #     im.matrix.brightness(0.20))
+    imagebutton idle "gui/chapel.jpg":
         action OpenURL('https://vk.com/chapel_jam')
         xalign 0.95
         yalign 0.8
