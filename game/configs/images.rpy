@@ -1,12 +1,35 @@
 #images 
 
-image bg_white = "#ffffff"
-image bg_black = "#000000"
+## Определения фоновых изображений
+image bg_bashnya = "images/bg/bashnya.jpg"
+image bg_vhod = "images/bg/vhod.jpg"
+image bg_koridor = "images/bg/koridor.jpg"
+image bg_kabinet = "images/bg/kabinet.jpg"
+image bg_hall = "images/bg/hall.jpg"
+image bg_golubi = "images/bg/golubi.png"
+image bg_pereulok = "images/bg/pereulok.jpg"
+image bg_krishi = "images/bg/krishi.jpg"
 
-image zamok_top = "images/bg/zamok_top.png"
-image zamok_vh = "images/bg/zamok_vh.png"
-image zamok_mid_1 = At("images/bg/zamok_mid.png", Move((0, 1080), (0, 0), 0.5, repeat=True))
-image zamok_mid_2 = At("images/bg/zamok_mid.png", Move((0, 0), (0, -1080), 0.5, repeat=True))
+## Общие изображения
+image bg_black = Solid("#000")
+image bg_white = Solid("#fff")
+
+## Эффекты
+transform darken:
+    matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.7)
+
+transform lighten:
+    matrixcolor TintMatrix("#ffffff") * ColorMatrix(1.0, 1.0, 1.0, 0.7)
+
+# Анимированное затемнение
+transform fade_to_dark:
+    linear 1.0 matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.0)
+    linear 1.0 matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.7)
+
+# Анимированное осветление
+transform fade_to_light:
+    linear 1.0 matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.7)
+    linear 1.0 matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.0)
 
 # Цветные заглушки для титров
 image credits_img_1 = Solid("#FF0000")  # Красный

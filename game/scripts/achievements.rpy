@@ -67,6 +67,11 @@ init python:
             "Игрок",
             "Наберите в змейке больше 5 очков",
         ),
+        "pipe_master" : Achievement(
+            "pipe_master",
+            "Марио?",
+            "Самостоятельно разберитесь с трубами",
+        ),
         "secret_ending": Achievement(
             "secret_ending",
             "???",

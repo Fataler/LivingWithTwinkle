@@ -163,11 +163,11 @@ screen pipe_game():
             text "Успех!" at success_text size 75 color "#fff" xalign 0.5 yalign 0.5
 
 transform success_appear:
-    alpha 0.0 zoom 1.5 yoffset 100
+    alpha 0.0 zoom 1.5
     parallel:
         ease 0.5 alpha 1.0
     parallel:
-        ease 0.5 zoom 1.0 yoffset 0
+        ease 0.5 zoom 1.0
         ease 0.15 zoom 1.1
         ease 0.15 zoom 1.0
 
