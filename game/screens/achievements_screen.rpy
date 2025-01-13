@@ -7,7 +7,7 @@ screen achievements_screen():
         vbox:
             spacing 10
 
-            if (develop_mode):
+            if (config.developer):
                 textbutton _("Cброс") action Function(reset_achievements)
             
             # Статистика достижений

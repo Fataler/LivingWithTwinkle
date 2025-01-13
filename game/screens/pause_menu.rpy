@@ -29,7 +29,7 @@ screen pause_menu():
             textbutton _("История") action ShowMenu("history")
             textbutton _("Настройки") action ShowMenu("preferences")
             textbutton _("Главное меню") action MainMenu()
-            textbutton _("Вернуться") action Hide("pause_menu")
+            textbutton _("Вернуться") action Return()
 
 style pause_menu_button:
     xalign 0.5
