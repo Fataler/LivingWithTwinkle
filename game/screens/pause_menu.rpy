@@ -28,11 +28,11 @@ screen pause_menu():
 
             text "ПАУЗА" size 40 xalign 0.5 color "#ffffff"
             
-            textbutton _("Сохранить") action ShowMenu("save")
-            textbutton _("Загрузить") action ShowMenu("load")
-            textbutton _("История") action ShowMenu("history")
-            textbutton _("Настройки") action ShowMenu("preferences")
-            textbutton _("Главное меню") action MainMenu()
+            textbutton _("Сохранить") action [Hide("pause_menu"), ShowMenu("save")]
+            textbutton _("Загрузить") action [Hide("pause_menu"), ShowMenu("load")]
+            textbutton _("История") action [Hide("pause_menu"), ShowMenu("history")]
+            textbutton _("Настройки") action [Hide("pause_menu"), ShowMenu("preferences")]
+            textbutton _("Главное меню") action [Hide("pause_menu"), MainMenu()]
             textbutton _("Вернуться") action Return()
 
 style pause_menu_button:

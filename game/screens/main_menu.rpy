@@ -1,4 +1,7 @@
 ## Экран главного меню
+init:
+    image bg_white = Solid("#ffffff")
+
 screen main_menu():
     tag menu
 
@@ -28,6 +31,10 @@ screen main_menu():
             text "[config.version]":
                 style "main_menu_version"
 
+    if show_main_menu_fade:
+        add "bg_white" at menu_alpha_out(1)
+        timer 1 action SetVariable("show_main_menu_fade", False)
+
 style main_menu_vbox is vbox:
     xalign 1.0
     xoffset -30
@@ -48,7 +55,15 @@ transform hover_scale:
     rotate 0
     on idle:    
         parallel:
-            linear 0.1 xzoom 1.0 yzoom 1.0 rotate 0
+            linear 0.1 xzoom 1.0 yzoom 1.0
     on hover:
         parallel:
-            linear 0.1 xzoom 1.1 yzoom 1.1 rotate -5
+            linear 0.1 xzoom 1.1 yzoom 1.1
+
+transform alpha_out(time=0.5):
+    alpha 1
+    linear time alpha 0
+
+transform alpha_in(time=0.5):
+    alpha 0
+    linear time alpha 1
