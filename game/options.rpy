@@ -13,6 +13,7 @@
 ## Символы "_()", окружающие название, отмечают его как пригодное для перевода.
 
 define config.name = _("Жизнь с огоньком")
+define config.image_cache_size_mb = 512
 
 
 ## Определяет, показывать ли заголовок, данный выше, на экране главного меню.
@@ -20,10 +21,19 @@ define config.name = _("Жизнь с огоньком")
 
 define gui.show_name = True
 
+define config.developer = True
+
+if config.developer:
+    define config.rollback_enabled = True
+else:
+    define config.rollback_enabled = False
+
 
 ## Версия игры.
 
 define config.version = "1.0"
+
+define config.mouse = { 'default' : [ ("gui/cursor.png", 0, 0)] }
 
 
 ## Текст, помещённый в экран "Об игре". Поместите текст между тройными скобками.
@@ -196,6 +206,16 @@ init python:
 
     # build.classify('game/**.png', 'archive')
     # build.classify('game/**.jpg', 'archive')
+
+    build.classify('game/**.png', 'archive')
+    build.classify('game/**.jpg', 'archive')
+    build.classify('game/**.ogv', 'archive')
+    build.classify('game/**.ogg', 'archive')
+    build.classify('game/**.ttf', 'archive')
+    build.classify('game/**.otf', 'archive')
+    
+    build.classify('game/**.rpy', 'archive')
+    build.classify('game/**.rpym', 'archive')
 
     ## Файлы, соответствующие образцам документации, дублируются в приложениях
     ## Mac, чтобы они появлялись и в приложении, и в zip архиве.

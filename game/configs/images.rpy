@@ -6,7 +6,7 @@ image bg_vhod = "images/bg/vhod.jpg"
 image bg_koridor = "images/bg/koridor.jpg"
 image bg_kabinet = "images/bg/kabinet.jpg"
 image bg_hall = "images/bg/hall.jpg"
-image bg_golubi = "images/bg/golubi.png"
+image bg_ptichnik = "images/bg/golubi.png"
 image bg_pereulok = "images/bg/pereulok.jpg"
 image bg_krishi = "images/bg/krishi.jpg"
 

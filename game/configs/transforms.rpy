@@ -32,7 +32,7 @@ transform exit_left(time=2.0):
 # Уход персонажа за правый край экрана
 transform exit_right(time=2.0):
     parallel:
-        ease time xpos 1000
+        ease time xpos 2500
     parallel:
         block:
             ease 0.2 yoffset 20
@@ -40,7 +40,7 @@ transform exit_right(time=2.0):
             repeat (int(time * 2.5))
 
 # Вход персонажа слева
-transform enter_left(time=1.0):
+transform enter_left(time=2.0):
     xpos -1000
     parallel:
         ease time xalign 0.2
@@ -51,19 +51,19 @@ transform enter_left(time=1.0):
             repeat (int(time * 2.5))
 
 # Вход персонажа справа
-transform enter_right(time=1.0):
+transform enter_right(time=2.0, xalign = 0.8):
     xpos 1920 + 1000
     parallel:
-        ease time xalign 0.8
+        ease time xalign xalign
     parallel:
         block:
             ease 0.2 yoffset 20
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
-transform jumping(times = 1):
+transform jumping(times = 1, height = 10, speed = 0.1):
     yoffset 0
-    linear 0.1 yoffset 10
+    linear speed yoffset height
     repeat times
 
 transform step_right(steps=1, step_time=0.3, step_size=50):
@@ -105,14 +105,3 @@ transform flip:
 
 transform flip_back:
     xzoom 1
-
-transform menu_board_drop:
-    ypos -900
-    easein 0.5 ypos 0
-    easeout 0.2 ypos -50
-    easein 0.15 ypos 0
-
-transform menu_items_appear:
-    alpha 0.0
-    pause 0.7
-    linear 0.3 alpha 1.0
