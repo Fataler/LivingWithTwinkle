@@ -301,7 +301,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     if main_menu:
         add gui.main_menu_background
     else:
-        add Solid("#0000009f")  # Полупрозрачный черный фон для игрового режима
+        add Solid("#0000009f")
 
     frame:
         style "game_menu_outer_frame"
@@ -618,19 +618,11 @@ screen preferences():
                 box_wrap True
 
                 if renpy.variant("pc") or renpy.variant("web"):
-
                     vbox:
                         style_prefix "radio"
                         label _("Режим экрана")
                         textbutton _("Оконный") action Preference("display", "window")
                         textbutton _("Полный") action Preference("display", "fullscreen")
-
-                # vbox:
-                #     style_prefix "check"
-                #     label _("Пропуск")
-                #     textbutton _("Всего текста") action Preference("skip", "toggle")
-                #     textbutton _("После выборов") action Preference("after choices", "toggle")
-                #     textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
 
                 vbox:
                     style_prefix "check"

@@ -58,7 +58,7 @@ define build.name = "LivingWithFire"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом

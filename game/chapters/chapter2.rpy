@@ -7,6 +7,7 @@ label chapter2:
 call screen time_passed("Прошло 3 дня")
 
 scene bg_ptichnik with Dissolve(1)
+show k shvabra at c_right
 K "Может, я перегнула палку тогда?"
 K "Хотя чего я вам рассказываю, вы и сами всё видели."
 K 'А знаете что? Это всё ваш "папочка" виноват!'

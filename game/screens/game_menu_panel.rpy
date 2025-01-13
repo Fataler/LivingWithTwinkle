@@ -41,7 +41,7 @@ screen menu_button():
     
     imagebutton:
         idle im.Scale("gui/ctc.png", 50, 50)
-        xalign 0.85
+        xalign 0.95
         yalign 0.98
         action [Function(toggle_game_menu)]
         at hover_scale
