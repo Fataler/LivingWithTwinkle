@@ -15,18 +15,14 @@
 define config.name = _("Жизнь с огоньком")
 define config.image_cache_size_mb = 512
 
+define config.developer = True
 
 ## Определяет, показывать ли заголовок, данный выше, на экране главного меню.
 ## Установите на False, чтобы спрятать заголовок.
 
 define gui.show_name = True
 
-define config.developer = True
-
-if config.developer:
-    define config.rollback_enabled = True
-else:
-    define config.rollback_enabled = False
+define config.rollback_enabled = True if config.developer else False
 
 
 ## Версия игры.
