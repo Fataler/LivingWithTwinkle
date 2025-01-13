@@ -159,4 +159,10 @@ image s:
 
 # Бандит 1
 
+image b1:
+    "images/characters/bandits/b1.png"
+
 # Бандит 2
+
+image b2:
+    "images/characters/bandits/b2.png"

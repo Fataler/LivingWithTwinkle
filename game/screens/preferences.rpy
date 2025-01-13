@@ -4,6 +4,8 @@
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
+default mouse_xy = (0, 0)
+
 screen preferences():
 
     tag menu
@@ -11,116 +13,145 @@ screen preferences():
     use game_menu(_("Настройки"), scroll="viewport"):
 
         vbox:
+            xfill True
+            spacing 23
 
-            hbox:
-                box_wrap True
-
-                if renpy.variant("pc") or renpy.variant("web"):
-                    vbox:
+            vbox:
+                spacing 10
+                label _("Режим экрана")
+                hbox:
+                    box_wrap True
+                    spacing 23
+                    if renpy.variant("pc") or renpy.variant("web"):
                         style_prefix "radio"
-                        label _("Режим экрана")
                         textbutton _("Оконный") action Preference("display", "window")
                         textbutton _("Полный") action Preference("display", "fullscreen")
 
-                vbox:
-                    style_prefix "check"
-                    label _("Пропуск")
-                    textbutton _("Прочитанный текст") action Preference("skip", "seen")
-                    textbutton _("Весь текст") action Preference("skip", "all")
-
-                ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
-                ## могут быть добавлены сюда для добавления новых настроек.
-
-            null height (4 * gui.pref_spacing)
-
-            hbox:
-                style_prefix "slider"
-                box_wrap True
-
-                vbox:
-
-                    label _("Скорость текста")
-
-                    bar value Preference("text speed")
-
-                    label _("Скорость авточтения")
-
-                    bar value Preference("auto-forward time")
-
-                vbox:
-
-                    if config.has_music:
-                        label _("Громкость музыки")
-
+            vbox:
+                spacing 15
+                label _("Текст")
+                hbox:
+                    spacing 23
+                    xsize 1000
+                    vbox:
+                        spacing 15
+                        text _("Скорость текста")
+                        text _("Скорость авточтения")
+                        text _("Пропускать")
+                    vbox:
+                        spacing 15
+                        xsize 525
+                        yoffset 8
+                        bar value Preference("text speed")
+                        bar value Preference("auto-forward time")
                         hbox:
-                            bar value Preference("music volume")
+                            style_prefix "check"
+                            textbutton _("Прочитанный текст") action Preference("skip", "seen")
+                            textbutton _("Весь текст") action Preference("skip", "all")
 
-                    if config.has_sound:
+            vbox:
+                spacing 15
+                label _("Звук")
+                hbox:
+                    spacing 23
+                    xsize 1000
+                    vbox:
+                        spacing 15
+                        if config.has_music:
+                            text _("Громкость музыки")
+                        if config.has_sound:
+                            text _("Громкость звуков")
+                        if config.has_voice:
+                            text _("Громкость голоса")
+                    vbox:
+                        spacing 15
+                        xsize 525
+                        xoffset 20
+                        yoffset 8
+                        if config.has_music:
+                            hbox:
+                                bar value Preference("music volume")
+                                if config.sample_sound:
+                                    textbutton _("Тест") action Play("sound", config.sample_sound)
+                        if config.has_sound:
+                            hbox:
+                                bar value Preference("sound volume")
+                                if config.sample_sound:
+                                    textbutton _("Тест") action Play("sound", config.sample_sound)
+                        if config.has_voice:
+                            hbox:
+                                bar value Preference("voice volume")
+                                if config.sample_voice:
+                                    textbutton _("Тест") action Play("voice", config.sample_voice)
+                        if config.has_music or config.has_sound or config.has_voice:
+                            hbox:
+                                style_prefix "check"
+                                textbutton _("Без звука") action Preference("all mute", "toggle")
 
-                        label _("Громкость звуков")
+            vbox:
+                spacing 10
+                label _("Специальные возможности")
+                hbox:
+                    box_wrap True
+                    spacing 30
+                    style_prefix "radio"
+                    vbox:
+                        spacing 10
+                        label _("Шрифт")
 
-                        hbox:
-                            bar value Preference("sound volume")
+                        textbutton _("Default"):
+                            action Preference("font transform", None)
+                            style_suffix "radio_button"
 
-                            if config.sample_sound:
-                                textbutton _("Тест") action Play("sound", config.sample_sound)
+                        textbutton _("DejaVu Sans"):
+                            action Preference("font transform", "dejavusans")
+                            style_suffix "radio_button"
+
+                    vbox:
+                        spacing 10
+                        label _("Размер текста")
+                        textbutton _("Маленький"):
+                            action Preference("font size", 0.8)
+                            style_suffix "radio_button"
+
+                        textbutton _("Обычный"):
+                            action Preference("font size", 1.0)
+                            style_suffix "radio_button"
+
+                        textbutton _("Большой"):
+                            action Preference("font size", 1.2)
+                            style_suffix "radio_button"
+
+                    vbox:
+                        spacing 10
+                        label _("High Contrast Text")
+
+                        textbutton _("Enable"):
+                            action Preference("high contrast text", "enable")
+                            style_suffix "radio_button"
+
+                        textbutton _("Disable"):
+                            action Preference("high contrast text", "disable")
+                            style_suffix "radio_button"
 
 
-                    if config.has_voice:
-                        label _("Громкость голоса")
+    $ tooltip = GetTooltip()
 
-                        hbox:
-                            bar value Preference("voice volume")
+    if tooltip:
+        timer 0.1 repeat True action Function(get_mouse)
+        $ mx = mouse_xy[0]
+        $ my = mouse_xy[1]
+        text tooltip:
+            pos(mx, my)
+            offset 50, 0
+            color gui.interface_text_color
+            size 35
+            at alpha_in(0.2)
 
-                            if config.sample_voice:
-                                textbutton _("Тест") action Play("voice", config.sample_voice)
-
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        textbutton _("Без звука"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
-
-                vbox:
-
-                    label _("Font Override")
-
-                    null height 10
-
-                    textbutton _("Стандартный"):
-                        action Preference("font transform", None)
-                        style_suffix "radio_button"
-                        tooltip _("Обычный шрифт игры")
-
-                    textbutton _("DejaVu Sans"):
-                        action Preference("font transform", "dejavusans")
-                        style_suffix "radio_button"
-                        tooltip _("Шрифт в Ren'Py по умолчанию")
-
-                    textbutton _("Opendyslexic"):
-                        action Preference("font transform", "opendyslexic")
-                        style_suffix "radio_button"
-                        tooltip _("Специальный шрифт для людей с дислексией")
-
-                    null height 10
-
-                    label _("Text Size Scaling")
-
-                    null height 10
-
-                    textbutton _("Обычный"):
-                        action Preference("font size", 1.0)
-                        style_suffix "radio_button"
-
-                    textbutton _("Большой"):
-                        action Preference("font size", 1.1)
-                        style_suffix "radio_button"
-
-                    textbutton _("Огромный"):
-                        action Preference("font size", 1.2)
-                        style_suffix "radio_button"
-
+init -2 python:
+    def get_mouse():
+        global mouse_xy
+        mouse_xy = renpy.get_mouse_pos()
 
 style pref_label is gui_label
 style pref_label_text is gui_label_text
@@ -166,7 +197,7 @@ style tooltip:
     yoffset -50
 
 style tooltip_text:
-    size 16
+    size 106
     color "#ffffff"
     text_align 0.5
     xalign 0.5

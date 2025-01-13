@@ -3,12 +3,12 @@
 ################################################################################
 init -2 python:
     renpy.music.register_channel("video", loop=False, stop_on_mute=True, tight=False, movie=True)
-    renpy.music.register_channel("video1", "video", loop=False, stop_on_mute=True, tight=False, movie=True)
+    renpy.music.register_channel("video_ch", "video", loop=False, stop_on_mute=True, tight=False, movie=True)
 
 default show_main_menu_fade = False
 
 init:
-    image logo_jam = Movie(channel='video1', play="video/jam4.ogv", loops=0, stop_music=True)
+    image logo_jam = Movie(channel='video_ch', play="video/jam4.ogv", loops=0, stop_music=True)
 
 screen logo_jam():
     add "logo_jam"
@@ -32,7 +32,7 @@ label splashscreen:
         $renpy.pause(4.85, hard=True)
     else:
         $renpy.pause(4.85)
-    $renpy.music.stop(channel='video1', fadeout=None)
+    $renpy.music.stop(channel='video_ch', fadeout=None)
     hide screen logo_jam
     
     if persistent.first_start:

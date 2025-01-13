@@ -61,7 +61,7 @@ transform enter_right(time=2.0, xalign = 0.8):
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
-transform jumping(times = 1, height = 10, speed = 0.1):
+transform jumping(times = 1, height = 20, speed = 0.3):
     yoffset 0
     linear speed yoffset height
     repeat times
@@ -105,3 +105,11 @@ transform flip:
 
 transform flip_back:
     xzoom 1
+
+transform put_down(speed=0.5, offset=-10):
+    parallel:
+        linear speed xoffset offset
+        linear speed xoffset 0
+    parallel:
+        linear speed yoffset 50
+        linear speed yoffset 0

@@ -60,7 +60,7 @@ transform hover_scale:
         parallel:
             linear 0.1 xzoom 1.1 yzoom 1.1
 
-transform alpha_out(time=0.5):
+transform menu_alpha_out(time=0.5):
     alpha 1
     linear time alpha 0
 
