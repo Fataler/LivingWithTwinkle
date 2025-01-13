@@ -33,55 +33,64 @@ init python:
             if not self.unlocked:
                 # Сохраняем состояние в persistent
                 persistent._achievement_unlocked[self.id] = True
-                # Показываем нотификацию
                 #renpy.play("audio/achievement.ogg", channel="sound")
+                # Показываем нотификацию
                 renpy.show_screen("achievement_popup", achievement=self)
                 renpy.restart_interaction()
 
-    ACHIEVEMENT_ICON_SIZE = 96  # размер иконки в списке (96x96 пикселей - стандартный размер для иконок достижений)
-    ACHIEVEMENT_POPUP_ICON_SIZE = 64  # размер иконки в уведомлении (64x64 пикселя - компактнее для уведомления)
+    ACHIEVEMENT_ICON_SIZE = 96
+    ACHIEVEMENT_POPUP_ICON_SIZE = 64
 
-    # Список всех достижений
+    # ID достижений
+    FIRST_STEPS = "first_steps"
+    WOLF_HUNTER = "wolf_hunter"
+    PIPE_MASTER = "pipe_master"
+    FIRST_CHAPTER = "first_chapter"
+    SECOND_CHAPTER = "second_chapter"
+    GAME_COMPLETED = "game_completed"
+
+    # Список достижений
     achievements = {
-        "first_steps": Achievement(
-            "first_steps",
+        FIRST_STEPS: Achievement(
+            FIRST_STEPS,
             "Первые шаги",
             "Добро пожаловать в игру!",
             False,
             "images/achievements/achievement.png"
         ),
-        "kish": Achievement(
-            "kish",
-            "Фанат Король и Шут",
-            "Послушайте все треки Короля и Шута"
-        ),
-        "wolf_hunter": Achievement(
-            "wolf_hunter",
+        WOLF_HUNTER: Achievement(
+            WOLF_HUNTER,
             "Логово найдено",
             "Найдите логово собирателя волчьих хвостов",
             False,
-            icon = "images/achievements/wolf.png"
+            icon="images/achievements/wolf.png"
         ),
-        "snake_master" : Achievement(
-            "snake_master",
-            "Игрок",
-            "Наберите в змейке больше 5 очков",
-        ),
-        "pipe_master" : Achievement(
-            "pipe_master",
+        PIPE_MASTER: Achievement(
+            PIPE_MASTER,
             "Марио?",
-            "Самостоятельно разберитесь с трубами",
+            "Самостоятельно разберитесь с трубами"
         ),
-        "secret_ending": Achievement(
-            "secret_ending",
-            "???",
-            "Найдите секретную концовку",
+        FIRST_CHAPTER: Achievement(
+            FIRST_CHAPTER,
+            "Первая глава",
+            "Пройдите первую главу",
+            True
+        ),
+        SECOND_CHAPTER: Achievement(
+            SECOND_CHAPTER,
+            "Вторая глава",
+            "Пройдите вторую главу",
+            True
+        ),
+        GAME_COMPLETED: Achievement(
+            GAME_COMPLETED,
+            "Третья глава",
+            "Пройдите всю игру",
             True
         )
     }
 
     def unlock_achievement(id):
-        """Простая функция для разблокировки достижения по ID"""
         if id in achievements:
             achievements[id].unlock()
             

@@ -51,4 +51,4 @@ transform hover_scale:
             linear 0.1 xzoom 1.0 yzoom 1.0 rotate 0
     on hover:
         parallel:
-            linear 0.1 xzoom 1.1 yzoom 1.1 rotate -10
+            linear 0.1 xzoom 1.1 yzoom 1.1 rotate -5
