@@ -89,7 +89,7 @@ label horror_scene:
         yanchor 0.5
         xpos 0.5
         ypos 0.5
-        zoom 1.5
+        zoom 1.2
         linear 2.0 zoom 1
     
     $ renpy.pause(2.0, hard=True)

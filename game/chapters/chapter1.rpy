@@ -324,5 +324,4 @@ F "Я не могу."
 F "Можешь оставаться."
 F "Но зарплату не повышу."
 #F уходит
-$ unlock_achievement("first_chapter")
 jump chapter2

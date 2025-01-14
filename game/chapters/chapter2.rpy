@@ -5,6 +5,7 @@ label chapter2:
 #прошло 3 дня - может прям текстом на черном экране написать, или стоит придумать какие-то "экраны загрузки"
 #птичник, к облокачивается на швабру и говорит с птицами
 call screen time_passed("Прошло 3 дня")
+$ unlock_achievement("first_chapter")
 
 scene bg_ptichnik with Dissolve(1)
 show k shvabra at c_right
@@ -373,8 +374,7 @@ R2 "Что, хочешь отдать ещё одну птичку?"
 
 #цг со столбом синего огня над крышами города
 
-scene bg_fire with Dissolve(1)
-pause(10)
+call boom_scene from _call_boom_scene
 
 $ unlock_achievement("second_chapter")
 jump chapter3

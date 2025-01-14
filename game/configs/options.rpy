@@ -92,12 +92,12 @@ define config.intra_transition = dissolve
 
 ## Переход, используемый после загрузки слота сохранения.
 
-define config.after_load_transition = None
+define config.after_load_transition = Dissolve(.2)
 
 
 ## Используется при входе в главное меню после того, как игра закончится.
 
-define config.end_game_transition = None
+define config.end_game_transition = Dissolve(.2)
 
 
 ## Переменная, устанавливающая переход, когда старт игры не существует. Вместо
@@ -164,7 +164,7 @@ define config.save_directory = "LivingWithFire-1736464150"
 ##
 ## Иконка, показываемая на панели задач или на dock.
 
-define config.window_icon = "images/horror/b_fire_1.png"
+define config.window_icon = "gui/window_icon.png"
 
 
 ## Настройка Дистрибутива ######################################################

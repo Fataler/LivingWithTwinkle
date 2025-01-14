@@ -3,6 +3,8 @@ label chapter3:
 ###############################################################################
 
 scene bg_black with Dissolve(1)
+
+call screen time_passed("15 минут спустя")
 pause 1
 show bg_hall
 show f normal at enter_left(4)

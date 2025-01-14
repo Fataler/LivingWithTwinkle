@@ -113,3 +113,7 @@ transform put_down(speed=0.5, offset=-10):
     parallel:
         linear speed yoffset 50
         linear speed yoffset 0
+
+transform hide_after_pause(time = 1):
+    pause time
+    linear 0.1 alpha 0.0
