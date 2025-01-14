@@ -10,7 +10,9 @@ label start:
     window hide
     #$ renpy.call_screen("credits")
     
-    jump chapter1
+    #jump chapter1
+
+    jump horror_scene
 
     scene bg room
 

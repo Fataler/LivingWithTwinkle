@@ -1,17 +1,29 @@
 ## Экран главного меню
 init:
     image bg_white = Solid("#ffffff")
+    image menu_background_image:
+        "gui/menu_bg.png"
+        anchor (0.5, 0.5)
+        xsize 1.10
+        ysize 1.10
+    image menu_tower_image:
+        "gui/menu_tower.png"
+        anchor (0.5, 0.5)
+        xsize 1.25
+        ysize 1.25
+    image menu_clouds_image:
+        "gui/menu_clouds.png"
+        anchor (0.5, 0.5)
+        xsize 1.35
+        ysize 1.35
 
 screen main_menu():
     tag menu
 
-    # Фон главного меню
-    add gui.main_menu_background
+    add Parallax("menu_background_image", 3)
+    add Parallax("menu_tower_image", 5)
+    add Parallax("menu_clouds_image", 15)
 
-    # Затемнение
-    add "gui/overlay/main_menu.png"
-
-    # Навигация
     use navigation
 
     use real_clock

@@ -18,13 +18,12 @@ define POS_17 = (1907, 432)
 define POS_18 = (1811, 37)
 define POS_19 = (20, 51)
 
-# Финальная позиция
 define POS_FINAL = (1046, 520)
 
 # Скорости анимации
-define SLOW_MOVE_DURATION = 3.0  # Медленное движение
+define SLOW_MOVE_DURATION = 3.0   # Медленное движение
 define FINAL_RUSH_DURATION = 0.1  # Финальный рывок
-define WAVE_AMPLITUDE = 5  # Амплитуда волнообразного движения
+define WAVE_AMPLITUDE = 5         # Амплитуда волнообразного движения
 
 define ALPHA_IN_TIME = 0.3
 
@@ -159,10 +158,10 @@ label horror_scene:
     show r_fire as r19 at alpha_in(ALPHA_IN_TIME), at_pos(POS_19[0], POS_19[1])
     $ renpy.pause(ALPHA_IN_TIME, hard=True)
     
-    # Начало тряски перед движением
+    # Начало тряски
     show b_fire at shake
     
-    # Финальное движение к центру
+    # Движение к центру
     python:
         mid1 = calc_sub_point(POS_1[0], POS_1[1])
         mid2 = calc_sub_point(POS_2[0], POS_2[1])
@@ -210,9 +209,6 @@ label horror_scene:
     $ renpy.pause(1.98, hard=True)
     
     scene black with Dissolve(0.1)
-    #$ renpy.pause(0.2, hard=True)
-    
-    #show text "{size=100}СПАТЬ{/size}" at big_text with vpunch
     $ renpy.pause(5.0, hard=True)
     
     return
