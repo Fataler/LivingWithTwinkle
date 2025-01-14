@@ -34,9 +34,9 @@ image b_fire:
     yanchor 0.5
     block:
         "images/horror/b_fire_1.png"
-        pause 0.2
+        pause 0.15 + renpy.random.random() * 0.1
         "images/horror/b_fire_2.png"
-        pause 0.2
+        pause 0.15 + renpy.random.random() * 0.1
         repeat
 
 image r_fire:
@@ -44,9 +44,9 @@ image r_fire:
     yanchor 0.5
     block:
         "images/horror/r_fire_1.png"
-        pause 0.2
+        pause 0.15 + renpy.random.random() * 0.1
         "images/horror/r_fire_2.png"
-        pause 0.2
+        pause 0.15 + renpy.random.random() * 0.1
         repeat
 
 transform shake(force = 1):
@@ -206,7 +206,7 @@ label horror_scene:
     $ renpy.pause(SLOW_MOVE_DURATION, hard=True)
     show b_fire at shake(2)
     
-    $ renpy.pause(1.98, hard=True)
+    $ renpy.pause(1.97, hard=True)
     
     scene black with Dissolve(0.1)
     $ renpy.pause(5.0, hard=True)
