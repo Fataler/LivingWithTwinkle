@@ -7,7 +7,7 @@ label chapter1:
 scene bg_black 
 show bg_bashnya with dissolve
 
-play music music_tower loop fadein 2.0
+play music music_tower loop fadein 2.0 fadeout 2.0
 
 "Каждому в этом мире повезло родиться со способностями, но не Феликсу." 
 "Нет, способность-то у него была, но она отравляла каждую минуту его существования." 

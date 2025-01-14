@@ -29,7 +29,6 @@ define F = Character("Феликс",
     what_suffix="",
     ctc=ctc_indicator,      
     ctc_position="nestled",
-    what_slow_cps=30,
     what_slow_abortable=False
 )
 
@@ -38,7 +37,6 @@ define F_m = Character("Феликс",
     what_suffix="){/i} ",
     ctc=ctc_mind_indicator,      
     ctc_position="nestled",
-    what_slow_cps=30,
     what_slow_abortable=False
 )
 
@@ -47,7 +45,6 @@ define S = Character("Секретарь",
     what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
-    what_slow_cps=30,
     what_slow_abortable=False
 )
 
@@ -56,7 +53,6 @@ define K = Character("Клементина",
     what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
-    what_slow_cps=30,
     what_slow_abortable=False
 )
 
@@ -65,7 +61,6 @@ define R1 = Character("Аркан",
     what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
-    what_slow_cps=30,
     what_slow_abortable=False
 )
 
@@ -74,7 +69,6 @@ define R2 = Character("Мундштук",
     what_suffix="",
     ctc=ctc_indicator,
     ctc_position="nestled",
-    what_slow_cps=30,
     what_slow_abortable=False
 )
 

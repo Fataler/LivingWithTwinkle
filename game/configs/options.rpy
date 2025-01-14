@@ -57,7 +57,7 @@ define config.has_music = True
 define config.has_voice = False
 
 define config.default_sfx_volume = 0.5
-define config.default_music_volume = 0.5
+define config.default_music_volume = 0.4
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом
 ## каналах, раскомментируйте строчку и настройте пример звука для прослушивания.
@@ -129,8 +129,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## в то время как любая другая цифра — это количество символов, печатаемых в
 ## секунду.
 
-default preferences.text_cps = 0
-
+default preferences.text_cps = 30
 
 ## Стандартная задержка авточтения. Большие значения означают долгие ожидания, а
 ## от 0 до 30 — вполне допустимый диапазон.

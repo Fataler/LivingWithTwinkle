@@ -27,11 +27,15 @@ label splashscreen:
     stop music
     scene bg_white
 
+    $ renpy.music.set_volume(0.5, channel='video_ch')  
+
     show screen logo_jam
+
     if persistent.first_start:
         $renpy.pause(4.85, hard=True)
     else:
         $renpy.pause(4.85)
+
     $renpy.music.stop(channel='video_ch', fadeout=None)
     hide screen logo_jam
     
