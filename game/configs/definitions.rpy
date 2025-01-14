@@ -9,4 +9,4 @@ define develop_mode = True
 default persistent.first_start = True
 default persistent.font_type = "default"
 
-define splash_enabled = True
+define splash_enabled = False

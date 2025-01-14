@@ -55,5 +55,5 @@ transform pause_menu_board_drop:
 
 transform pause_menu_items_appear:
     alpha 0.0
-    pause 0.7
-    linear 0.3 alpha 1.0
+    pause 0.5
+    easein 0.3 alpha 1.0

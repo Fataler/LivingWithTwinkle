@@ -106,6 +106,7 @@ screen preferences():
                         textbutton _("DejaVu Sans"):
                             action Preference("font transform", "dejavusans")
                             style_suffix "radio_button"
+                            tooltip "Шрифт в Ren'Py по умолчанию"
 
                     vbox:
                         spacing 10

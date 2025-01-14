@@ -18,8 +18,8 @@ screen main_menu():
 
     imagebutton idle "gui/chapel.jpg":
         action OpenURL('https://vk.com/chapel_jam')
-        xalign 0.95
-        yalign 0.8
+        xalign 0.9
+        yalign 0.7
         at hover_scale
 
     # Название игры
@@ -52,6 +52,7 @@ style main_menu_version is main_menu_text:
     properties gui.text_properties("version")
 
 transform hover_scale:
+    anchor (0.5, 0.5)
     rotate 0
     on idle:    
         parallel:
