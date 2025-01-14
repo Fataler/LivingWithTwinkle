@@ -299,7 +299,9 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     style_prefix "game_menu"
 
     if main_menu:
-        add gui.main_menu_background
+        add Parallax("menu_background_image", 3)
+        add Parallax("menu_tower_image", 5)
+        add Parallax("menu_clouds_image", 15)
     else:
         add Solid("#eeeeee6b")
 
