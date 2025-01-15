@@ -114,6 +114,13 @@ transform put_down(speed=0.5, offset=-10):
         linear speed yoffset 50
         linear speed yoffset 0
 
-transform hide_after_pause(time = 1):
+transform punch_h(duration=0.1, strength=10):
+    xoffset 0
+    ease duration/4 xoffset strength
+    ease duration/4 xoffset -strength
+    ease duration/4 xoffset strength/2
+    ease duration/4 xoffset 0
+
+transform hide_after_pause(time = 1, alpha_time = 0.1):
     pause time
-    linear 0.1 alpha 0.0
+    linear alpha_time alpha 0.0

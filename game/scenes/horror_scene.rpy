@@ -63,7 +63,7 @@ transform at_pos(xpos, ypos):
 transform move_to_final(start_x, start_y, mid_x, mid_y):
     parallel:
         ease SLOW_MOVE_DURATION xpos mid_x ypos mid_y
-        pause 2
+        pause 1
         ease FINAL_RUSH_DURATION xpos POS_FINAL[0] ypos POS_FINAL[1]
     parallel:
         ease 0.5 yoffset WAVE_AMPLITUDE
@@ -77,12 +77,12 @@ transform big_text:
 
 init python:
     def calc_sub_point(start_x, start_y):
-        mid_x = int(start_x + (POS_FINAL[0] - start_x) / 3)
-        mid_y = int(start_y + (POS_FINAL[1] - start_y) / 3)
+        mid_x = int(start_x + (POS_FINAL[0] - start_x) / 4)
+        mid_y = int(start_y + (POS_FINAL[1] - start_y) / 4)
         return (mid_x, mid_y)
 
 label horror_scene:
-    $ _skipping = False
+    #$ _skipping = False
     
     scene bg_houses:
         xanchor 0.5
@@ -91,8 +91,6 @@ label horror_scene:
         ypos 0.5
         zoom 1.2
         linear 2.0 zoom 1
-    
-    $ renpy.pause(2.0, hard=True)
     
     # Синий огонь
     show b_fire at alpha_in(0.5):
@@ -206,9 +204,9 @@ label horror_scene:
     $ renpy.pause(SLOW_MOVE_DURATION, hard=True)
     show b_fire at shake(2)
     
-    $ renpy.pause(1.97, hard=True)
+    $ renpy.pause(0.95, hard=True)
     
     scene black with Dissolve(0.1)
-    $ renpy.pause(5.0, hard=True)
+    $ renpy.pause(3.0, hard=True)
     
     return
