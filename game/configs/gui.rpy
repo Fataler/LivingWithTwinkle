@@ -52,8 +52,8 @@ define gui.muted_color = '#e0a366'
 define gui.hover_muted_color = '#eac199'
 
 ## Цвета, используемые в тексте диалогов и выборов.
-define gui.text_color = '#404040'
-define gui.interface_text_color = '#404040'
+define gui.text_color = '#e9e9e9'
+define gui.interface_text_color = '#e9e9e9'
 
 
 ## Шрифты и их размеры #########################################################
@@ -108,13 +108,13 @@ define gui.textbox_yalign = 1.0
 ## Местоположение имени говорящего персонажа по отношению к текстовому окну.
 ## Это могут быть целые значения в пикселях слева и сверху от начала окна или
 ## процентное отношение, например, 0.5 для центрирования.
-define gui.name_xpos = 360
+define gui.name_xpos = 0.5
 define gui.name_ypos = 0
 
 ## Горизонтальное выравнивание имени персонажа. Это может быть 0.0 для
 ## левоориентированного, 0.5 для центрированного и 1.0 для правоориентированного
 ## выравнивания.
-define gui.name_xalign = 0.0
+define gui.name_xalign = 0.5
 
 ## Ширина, высота и границы окна, содержащего имя персонажа или None, для
 ## автоматической размерки.
@@ -265,7 +265,7 @@ define gui.notify_ypos = 68
 define gui.choice_spacing = 33
 
 ## Кнопки в секции навигации главного и игрового меню.
-define gui.navigation_spacing = 6
+define gui.navigation_spacing = 20
 
 ## Контролирует интервал между настройками.
 define gui.pref_spacing = 15
@@ -289,10 +289,10 @@ define gui.main_menu_text_xalign = 1.0
 ## пользовательского интерфейса, когда наложения или окна не представлены.
 
 ## Генерируем рамки.
-define gui.frame_borders = Borders(6, 6, 6, 6)
+define gui.frame_borders = Borders(60, 75, 60, 60)
 
 ## Рамки, используемые в частях экрана подтверждения.
-define gui.confirm_frame_borders = Borders(60, 60, 60, 60)
+define gui.confirm_frame_borders = Borders(60, 75, 60, 60)
 
 ## Рамки, используемые в частях экрана пропуска.
 define gui.skip_frame_borders = Borders(24, 8, 75, 8)

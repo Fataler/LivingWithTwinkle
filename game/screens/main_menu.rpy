@@ -31,17 +31,8 @@ screen main_menu():
     imagebutton idle "gui/chapel.jpg":
         action OpenURL('https://vk.com/chapel_jam')
         xalign 0.9
-        yalign 0.7
+        yalign 0.85
         at hover_scale
-
-    # Название игры
-    if gui.show_name:
-        vbox:
-            style "main_menu_vbox"
-            text "[config.name!t]":
-                style "main_menu_title"
-            text "[config.version]":
-                style "main_menu_version"
 
     if show_main_menu_fade:
         add "bg_white" at menu_alpha_out(1)
@@ -80,3 +71,7 @@ transform menu_alpha_out(time=0.5):
 transform alpha_in(time=0.5):
     alpha 0
     linear time alpha 1
+
+transform alpha_out(time=0.5):
+    alpha 1
+    linear time alpha 0

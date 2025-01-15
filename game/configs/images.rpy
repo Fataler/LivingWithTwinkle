@@ -1,18 +1,30 @@
 #images 
 
 ## Определения фоновых изображений
-image bg_bashnya = "images/bg/bashnya.jpg"
-image bg_vhod = "images/bg/vhod.jpg"
-image bg_koridor = "images/bg/koridor.jpg"
-image bg_kabinet = "images/bg/kabinet.jpg"
-image bg_hall = "images/bg/hall.jpg"
-image bg_ptichnik = "images/bg/golubi.png"
-image bg_pereulok = "images/bg/pereulok.jpg"
-image bg_krishi = "images/bg/krishi.jpg"
+image bg_bashnya   = "images/bg/bashnya.png"
+image bg_vhod      = "images/bg/vhod.jpg"
+image bg_koridor   = "images/bg/koridor.jpg"
+image bg_kabinet   = "images/bg/kabinet.png"
+image bg_hall      = "images/bg/hall.jpg"
+image bg_ptichnik  = "images/bg/golubi.png"
+image bg_pereulok  = "images/bg/pereulok.png"
+image bg_krishi    = "images/bg/krishi.jpg"
 
 ## Общие изображения
 image bg_black = Solid("#000")
 image bg_white = Solid("#fff")
+
+image bg_black_t_10 = Solid("#0000001a")
+image bg_black_t_20 = Solid("#00000033")
+image bg_black_t_30 = Solid("#0000004d")
+image bg_black_t_40 = Solid("#00000066")
+image bg_black_t_50 = Solid("#00000080")
+image bg_black_t_60 = Solid("#00000099")
+image bg_black_t_70 = Solid("#000000b3")
+image bg_black_t_80 = Solid("#000000cc")
+image bg_black_t_90 = Solid("#000000e6")
+
+image d1 = "images/d1.png"
 
 ## Эффекты
 transform darken:

@@ -72,11 +72,6 @@ define R2 = Character("Мундштук",
     what_slow_abortable=False
 )
 
-style ctc_text is text:
-    size 24
-    color "#ffffff"
-    outlines [(2, "#000000", 0, 0)]
-
 # трансформ для моргания
 transform parametric_blink(open_img, closed_img, min_wait=2.0, max_wait=4.0, blink_speed=0.15, double_blink_chance=0.03):
     open_img
@@ -92,65 +87,6 @@ transform parametric_blink(open_img, closed_img, min_wait=2.0, max_wait=4.0, bli
         open_img
         repeat
 
-# Трансформ для конкретного персонажа
-# transform alice_blink:
-#     parametric_blink("images/characters/alice/1.png", "images/characters/alice/2.png")
-
-# Определение спрайтов с помощью LayeredImage
-# layeredimage alice:
-#     group base:
-#         attribute base default at alice_blink
-#         attribute talking:
-#             "images/characters/alice/normal.png"
-
-#Определение изображений Феликса
-# layeredimage f:
-#     group pose:
-#         attribute normal default:
-#             "images/characters/felix/normal.png"
-#         attribute angry
-#         attribute sad
-
-#     group state:
-#         attribute base default:
-#             "images/characters/felix/normal.png"
-#         attribute glass:
-#             "images/characters/felix/glass.png"
-#         attribute cat:
-#             "images/characters/felix/cat.png"
-
-#     group if_angry:
-#         attribute base if_any "angry":
-#             "images/characters/felix/angry.png"
-#         attribute glass if_any "angry":
-#             "images/characters/felix/angry_talking.png"
-#         attribute cat if_any "angry":
-#             "images/characters/felix/angry_cat.png"
-
-#     group if_sad:
-#         attribute base if_any "sad":
-#             "images/characters/felix/sad.png"
-#         attribute glass if_any "sad":
-#             "images/characters/felix/sad_talking.png"
-#         attribute cat if_any "sad":
-#             "images/characters/felix/sad_angry.png"
-
-# Клементина
-# layeredimage k:
-#     group pose:
-#         attribute normal
-
-#     group state:
-#         attribute base default:
-#             "images/characters/klem/normal.png"
-#         attribute shvabra:
-#             "images/characters/klem/shvabra_1.png"
-
-# Секретарь
-# image s:
-#     "images/characters/secretary/normal.png"
-
-
 # Бандит 1
 
 image b1:
@@ -160,6 +96,29 @@ image b1:
 
 image b2:
     "images/characters/bandits/b2.png"
+
+image fel_fire:
+    "images/characters/felix/fire_01.png"
+    pause 0.13
+    "images/characters/felix/fire_02.png"
+    pause 0.13
+    "images/characters/felix/fire_03.png"
+    pause 0.13
+    repeat
+
+layeredimage fel:
+    always:
+        "images/characters/felix/gg_main.png"
+    always:
+        "fel_fire"
+
+    group hands:
+        attribute base_hands default:
+            "images/characters/felix/gg_hands.png"
+    
+    group face:
+        attribute base_face default:
+            "images/characters/felix/gg_face_norm.png"
 
 layeredimage f:
     # group base:
@@ -221,6 +180,8 @@ layeredimage f:
         attribute 23:#caught:
             "images/characters/felix/f23.png"
 
+# Клементина
+
 layeredimage k:
     # group base:
     #     attribute base default
@@ -278,6 +239,8 @@ layeredimage k:
             "images/characters/clementine/k17.png"
         attribute 18:#broom_wave:
             "images/characters/clementine/k18.png"
+        attribute 19:#broom_wave:
+            "images/characters/clementine/k19.png"
             
         attribute 20:#watch_you:
             "images/characters/clementine/k20.png"
@@ -290,6 +253,8 @@ layeredimage k:
             "images/characters/clementine/k21.png"
         attribute 22:#fake_scared:
             "images/characters/clementine/k22.png"
+
+# Секретарь
 
 layeredimage s:
     group base:

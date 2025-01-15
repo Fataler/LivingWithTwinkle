@@ -82,7 +82,7 @@ init python:
         return (mid_x, mid_y)
 
 label horror_scene:
-    #$ _skipping = False
+    $ _skipping = False
     
     scene bg_houses:
         xanchor 0.5
@@ -204,9 +204,10 @@ label horror_scene:
     $ renpy.pause(SLOW_MOVE_DURATION, hard=True)
     show b_fire at shake(2)
     
-    $ renpy.pause(0.95, hard=True)
+    $ renpy.pause(0.99, hard=True)
     
     scene black with Dissolve(0.1)
     $ renpy.pause(3.0, hard=True)
     
+    $ _skipping = True
     return

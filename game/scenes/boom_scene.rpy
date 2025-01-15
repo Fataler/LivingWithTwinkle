@@ -23,7 +23,6 @@ image roofs:
     ypos 0.5
 
 label boom_scene:
-
 $ _skipping = False
 
 scene roofs with fade:

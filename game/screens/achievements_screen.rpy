@@ -106,7 +106,7 @@ style achievements_stats_frame:
     xfill True
 
 style achievements_stats_text:
-    color "#000000"
+    color "#ffffff"
     size 24
     xalign 0.5
     text_align 0.5
@@ -206,7 +206,6 @@ screen achievement_popup(achievement):
                 text achievement.name style "achievement_popup_name"
                 text achievement.description style "achievement_popup_description"
 
-# Анимация появления уведомления
 transform achievement_popup_appear:
     xoffset 400
     alpha 0.0

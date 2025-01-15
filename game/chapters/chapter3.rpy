@@ -73,7 +73,7 @@ K "Упси!"
 #Сцена 13.
 ###############################################################################
 
-scene bg_koridor with Dissolve(1)
+scene bg_white with Dissolve(1)
 show f 08 at c_left
 show k 06 at c_right
 #котельная - игра?
@@ -105,7 +105,7 @@ label ch14:
 show bg_black with dissolve
 #Сцена 14.
 ###############################################################################
-scene bg_koridor with Dissolve(1)
+scene bg_white with Dissolve(1)
 #Коридор F и к медленно идут влево
 show f 08
 show k 10 #flip

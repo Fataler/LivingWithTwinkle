@@ -101,6 +101,7 @@ screen pipe_game():
         timer animation_timer action [SetScreenVariable("animation_timer", 0.0), SetField(game, "is_animating", False)]
     
     frame:
+        background None
         xalign 0.5
         yalign 0.5
         xpadding 20
@@ -111,7 +112,7 @@ screen pipe_game():
             
             # Сетка
             grid game.size game.size:
-                spacing -5
+                spacing 0
                 for i in range(game.size):
                     for j in range(game.size):
                         if game.current_state[i][j]:
@@ -122,12 +123,12 @@ screen pipe_game():
                             $ current_rot = game.current_rotations[i][j]
                             
                             button:
-                                xsize 100
-                                ysize 100
+                                xsize 150
+                                ysize 150
                                 action [
                                     Function(game.rotate_pipe, i, j),
                                     SetDict(game.current_rotations[i], j, game.get_pipe_rotation(game.current_state[i][j])),
-                                    SetScreenVariable("animation_timer", 0.4)
+                                    SetScreenVariable("animation_timer", 0.2)
                                 ]
                                 
                                 if game.debug and is_in_solution:
@@ -137,7 +138,7 @@ screen pipe_game():
                                     xalign 0.5
                                     yalign 0.5
                                     at pipe_rotate(current_rot, game.get_pipe_rotation(game.current_state[i][j]))
-                                    size (100, 100)
+                                    size (150, 150)
             
             hbox:
                 spacing 20
