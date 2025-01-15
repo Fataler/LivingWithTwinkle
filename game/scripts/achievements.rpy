@@ -73,13 +73,13 @@ init python:
         FIRST_CHAPTER: Achievement(
             FIRST_CHAPTER,
             "Первая глава",
-            "Пройдите первую главу",
+            "Прочтите первую главу",
             True
         ),
         SECOND_CHAPTER: Achievement(
             SECOND_CHAPTER,
             "Вторая глава",
-            "Пройдите вторую главу",
+            "Прочтите вторую главу",
             True
         ),
         GAME_COMPLETED: Achievement(
