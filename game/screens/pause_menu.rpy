@@ -10,23 +10,24 @@ screen pause_menu():
 
     add Solid("#00000080")  # Затемнение фона
 
+    add "menu_drop" at menu_board_drop:
+        xalign 0.5
+
     # Доска меню
     frame:
         style_prefix "pause_menu"
-        background "gui/menu_drop.png"
+        background None
         at pause_menu_board_drop
-        xsize 450
-        ysize 900
-        xalign 0.5
-        yalign 0
+        xanchor 0.5
+        xpos 0.5
 
         # Кнопки меню
         vbox at pause_menu_items_appear:
             spacing 30
-            xalign 0.5
-            ypos 200
+            xpos 0
+            ypos 210
 
-            text "ПАУЗА" size 40 xalign 0.5 color "#ffffff"
+            text "ПАУЗА" size 70 xalign 0.5 color "#ffffff" style "pause_menu_button_text"
             
             textbutton _("Сохранить") action [Hide("pause_menu"), ShowMenu("save")]
             textbutton _("Загрузить") action [Hide("pause_menu"), ShowMenu("load")]
@@ -35,23 +36,22 @@ screen pause_menu():
             textbutton _("Главное меню") action [Hide("pause_menu"), MainMenu()]
             textbutton _("Вернуться") action Return()
 
-style pause_menu_button:
-    xalign 0.5
-    background "#2222224D"
-    padding (20, 10)
-    xsize 200
+style pause_menu_button is navigation_button
 
-style pause_menu_button_text:
-    xalign 0.5
-    color "#ffffff"
-    hover_color "#ffff00"
-    size 24
+style pause_menu_button_text is navigation_button_text:
+    size 40
 
-transform pause_menu_board_drop:
-    ypos -900
+transform pause_menu_board_drop(start_pos = -900):
+    ypos start_pos
     easein 0.5 ypos 0
     easeout 0.2 ypos -50
     easein 0.15 ypos 0
+
+transform pause_menu_board_hide(height = -900):
+    ypos 0
+    easeout 0.15 ypos -50
+    easein 0.2 ypos 0
+    easeout 0.5 ypos height
 
 transform pause_menu_items_appear:
     alpha 0.0

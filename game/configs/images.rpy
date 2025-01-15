@@ -26,6 +26,11 @@ image bg_black_t_90 = Solid("#000000e6")
 
 image d1 = "images/d1.png"
 
+image menu_drop:
+    "gui/menu_drop.png"
+    xanchor 0
+    yanchor 0
+
 ## Эффекты
 transform darken:
     matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.7)

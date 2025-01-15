@@ -266,8 +266,8 @@ init python:
         config.overlay_screens.remove("quick_menu")
     
     # Добавляем наше новое меню
-    if "menu_button" not in config.overlay_screens:
-        config.overlay_screens.append("menu_button")
+    # if "menu_button" not in config.overlay_screens:
+    #     config.overlay_screens.append("menu_button")
 
 default quick_menu = False
 
@@ -303,7 +303,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
         add Parallax("menu_tower_image", 5)
         add Parallax("menu_clouds_image", 15)
     else:
-        add Solid("#eeeeee6b")
+        add "bg_black_t_50"
 
     frame:
         style "game_menu_outer_frame"
@@ -910,7 +910,8 @@ screen confirm(message, yes_action, no_action):
 
     style_prefix "confirm"
 
-    add "gui/overlay/confirm.png"
+    add "bg_black":
+        alpha 0.5
 
     frame:
 
@@ -945,10 +946,12 @@ style confirm_frame:
     padding gui.confirm_frame_borders.padding
     xalign .5
     yalign .5
+    minimum (1398, 250)
 
 style confirm_prompt_text:
     textalign 0.5
     layout "subtitle"
+    color "#FFF"
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
@@ -1194,6 +1197,8 @@ screen bubble(who, what):
 
         text what:
             id "what"
+
+        #use menu_button
 
 style bubble_window is empty
 style bubble_namebox is empty

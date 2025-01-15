@@ -58,35 +58,36 @@ init python:
             False,
             "images/achievements/achievement.png"
         ),
-        WOLF_HUNTER: Achievement(
-            WOLF_HUNTER,
-            "Логово найдено",
-            "Найдите логово собирателя волчьих хвостов",
-            False,
-            icon="images/achievements/wolf.png"
-        ),
+        # WOLF_HUNTER: Achievement(
+        #     WOLF_HUNTER,
+        #     "Логово найдено",
+        #     "Найдите логово собирателя волчьих хвостов",
+        #     False,
+        #     icon="images/achievements/wolf.png"
+        # ),
         PIPE_MASTER: Achievement(
             PIPE_MASTER,
             "Марио?",
-            "Самостоятельно разберитесь с трубами"
+            "Самостоятельно разберитесь с трубами",
+            True
         ),
         FIRST_CHAPTER: Achievement(
             FIRST_CHAPTER,
             "Первая глава",
             "Прочтите первую главу",
-            True
+            False
         ),
         SECOND_CHAPTER: Achievement(
             SECOND_CHAPTER,
             "Вторая глава",
             "Прочтите вторую главу",
-            True
+            False
         ),
         GAME_COMPLETED: Achievement(
             GAME_COMPLETED,
             "Третья глава",
             "Пройдите всю игру",
-            True
+            False
         )
     }
 

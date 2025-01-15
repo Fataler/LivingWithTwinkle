@@ -5,18 +5,15 @@
 
 screen navigation():
     
-    # Доска меню
-    add "gui/menu_drop.png" at menu_board_drop:
-        xpos 10  # Отступ слева
+    add "menu_drop" at menu_board_drop:
+        xpos 150
         
-    # Кнопки меню
     vbox at menu_items_appear:
         style_prefix "navigation"
-        xpos 40  # Отступ для текста от левого края
-        yalign 0.5
+        xpos 150
+        ypos 290
         spacing gui.navigation_spacing
         
-
         if main_menu:
             textbutton _("Начать") action Start()
         else:
@@ -52,9 +49,10 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
-    color "#000"  # Черный цвет для текста
-    hover_color "#8B0000"  # Темно-красный при наведении
-    size 40
+    #font "gui/fonts/TippytoesRegular.ttf"
+    color "#ffffff"
+    hover_color "#b29175"
+    size 60
     xalign 0.5
 
 transform menu_board_drop:
@@ -63,7 +61,18 @@ transform menu_board_drop:
     easeout 0.2 ypos -50
     easein 0.15 ypos 0
 
+transform menu_board_up:
+    ypos 0
+    parallel:
+        linear 0.3 ypos -50
+        linear 0.2 ypos 0
+        linear 0.5 ypos -900
+
 transform menu_items_appear:
     alpha 0.0
-    pause 0.5
+    pause 0.7
     easein 0.3 alpha 1.0
+
+transform menu_items_disappear:
+    alpha 1.0
+    linear 0.3 alpha 0.0

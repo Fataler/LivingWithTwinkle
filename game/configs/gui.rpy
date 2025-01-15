@@ -29,11 +29,11 @@ define config.check_conflicting_properties = True
 define gui.accent_color = '#cc6600'
 
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
-define gui.idle_color = '#707070'
+define gui.idle_color = '#ffffff'
 
 ## Small_color используется в маленьком тексте, который должен быть ярче/темнее,
 ## для того, чтобы выделяться.
-define gui.idle_small_color = '#606060'
+define gui.idle_small_color = '#cfcdcd'
 
 ## Цвет, используемых в кнопках и панелях, когда они наведены.
 define gui.hover_color = '#cc6600'
@@ -41,10 +41,10 @@ define gui.hover_color = '#cc6600'
 ## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
 ## Кнопка может быть выбрана, если это текущий экран или текущее значение
 ## настройки.
-define gui.selected_color = '#555555'
+define gui.selected_color = '#cccccc'
 
 ## Цвет, используемый текстовой кнопкой, когда она не может быть выбрана.
-define gui.insensitive_color = '#7070707f'
+define gui.insensitive_color = '#a9a7a77f'
 
 ## Цвета, используемые для частей панелей, которые не заполняются. Они
 ## используются не напрямую, а только при воссоздании файлов изображений.
@@ -65,7 +65,7 @@ define gui.text_font = "gui/fonts/EBGaramond08-Regular.otf"
 define gui.name_text_font = "gui/fonts/Philosopher-Bold.ttf"
 
 ## Шрифт, используемый текстом вне игры.
-define gui.interface_text_font = "gui/fonts/Philosopher-Regular.ttf"
+define gui.interface_text_font = "gui/fonts/TippytoesRegular.ttf"
 
 ## Размер нормального текста диалога.
 define gui.text_size = 45

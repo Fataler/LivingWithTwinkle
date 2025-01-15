@@ -15,7 +15,7 @@ transform loading_move:
     xzoom -1.0
     parallel:
         xpos -128 yalign 0.95  # начальная позиция слева
-        linear 7.0 xpos 1920+128   # движение вправо за 7 секунд (время показа экрана)
+        linear 7.0 xpos 1920+128   # движение вправо за 7 секунд
     parallel:
         block:
             ease 1 yoffset 20
@@ -71,7 +71,6 @@ screen time_passed(text="Прошло времени..."):
         at show_screen_transform
         
         add Solid("#121212")
-        # add "gui/overlay/ctc.png"
         
         vbox:
             align (0.5, 0.5)
@@ -85,13 +84,6 @@ screen time_passed(text="Прошло времени..."):
                     alpha 0.0
                     pause 1.0
                     ease 2.0 alpha 1.0
-
-        # text "(Место для чибби-приколов)":
-        #     size 60
-        #     color "#ffffff"
-        #     text_align 0.5
-        #     xalign 0.5
-        #     yalign 0.7
 
         add "loading_animation":
             at loading_move
