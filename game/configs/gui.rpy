@@ -27,6 +27,7 @@ define config.check_conflicting_properties = True
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
 define gui.accent_color = '#Ab9250'
+define black_text_color = "#1E1E20"
 #hover = #c8ab5e
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
 define gui.idle_color = '#E0E0E0'
@@ -41,10 +42,10 @@ define gui.hover_color = '#Ab9250'
 ## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
 ## Кнопка может быть выбрана, если это текущий экран или текущее значение
 ## настройки.
-define gui.selected_color = '#cccccc'
+define gui.selected_color = '#Ab9250'
 
 ## Цвет, используемый текстовой кнопкой, когда она не может быть выбрана.
-define gui.insensitive_color = '#f5f6f8ba'
+define gui.insensitive_color = '#919498ff'
 
 ## Цвета, используемые для частей панелей, которые не заполняются. Они
 ## используются не напрямую, а только при воссоздании файлов изображений.
@@ -185,9 +186,9 @@ define gui.button_text_xalign = 0.0
 ##
 ## Эти настройки используются стандартным интерфейсом:
 
-define gui.radio_button_borders = Borders(27, 6, 6, 6)
+define gui.radio_button_borders = Borders(42, 6, 6, 6)
 
-define gui.check_button_borders = Borders(27, 6, 6, 6)
+define gui.check_button_borders = Borders(42, 6, 6, 6)
 
 define gui.confirm_button_text_xalign = 0.5
 
@@ -343,7 +344,7 @@ define gui.unscrollable = "hide"
 ## Экран истории показывает диалог, который игрок уже прошёл.
 
 ## Количество диалоговых блоков истории, которые Ren'Py будет хранить.
-define config.history_length = 250
+define config.history_length = 50
 
 ## Высота доступных записей на экране истории, или None, чтобы задать высоту в
 ## зависимости от производительности.
@@ -364,6 +365,8 @@ define gui.history_text_xpos = 255
 define gui.history_text_ypos = 3
 define gui.history_text_width = 1110
 define gui.history_text_xalign = 0.0
+
+define gui.slot_button_text_size = 35
 
 
 ## Режим NVL ###################################################################

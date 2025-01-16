@@ -33,7 +33,7 @@ init python:
             if not self.unlocked:
                 # Сохраняем состояние в persistent
                 persistent._achievement_unlocked[self.id] = True
-                #renpy.play("audio/achievement.ogg", channel="sound")
+                renpy.play(sfx_ui_achieve, channel="ui")
                 # Показываем нотификацию
                 renpy.show_screen("achievement_popup", achievement=self)
                 renpy.restart_interaction()
@@ -48,6 +48,7 @@ init python:
     FIRST_CHAPTER = "first_chapter"
     SECOND_CHAPTER = "second_chapter"
     GAME_COMPLETED = "game_completed"
+    THANK_YOU = "thank_you"
 
     # Список достижений
     achievements = {
@@ -57,6 +58,12 @@ init python:
             "Добро пожаловать в игру!",
             False,
             "images/achievements/achievement.png"
+        ),
+        THANK_YOU: Achievement(
+            THANK_YOU,
+            "Спасибо за проявленный интерес!",
+            "Зайти в раздел \"Об игре\"",
+            True
         ),
         # WOLF_HUNTER: Achievement(
         #     WOLF_HUNTER,

@@ -37,18 +37,18 @@ transform exit_right(time=4.0):
             repeat (int(time * 2.5))
 
 # Вход персонажа слева
-transform enter_left(time=2.0):
-    xpos -1000
-    parallel:
-        ease time xalign 0.2
-    parallel:
-        block:
-            ease 0.2 yoffset 20
-            ease 0.2 yoffset 0
-            repeat (int(time * 2.5))
+# transform enter_left(time=2.0, from_right=False):
+#     xpos (2000 if from_right else -1000)
+#     parallel:
+#         ease time xalign 0.2
+#     parallel:
+#         block:
+#             ease 0.2 yoffset 20
+#             ease 0.2 yoffset 0
+#             repeat (int(time * 2.5))
 
-transform enter_c_left(time=2.0):
-    xpos -1000
+transform enter_c_left(time=2.0, from_right=False):
+    xpos (2000 if from_right else -1000)
     parallel:
         ease time xalign 0.1
     parallel:
@@ -57,8 +57,8 @@ transform enter_c_left(time=2.0):
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
-transform enter_c_right(time=2.0):
-    xpos 1920 + 1000
+transform enter_c_right(time=2.0, from_left=False):
+    xpos (-1000 if from_left else 2000)
     parallel:
         ease time xalign 0.95
     parallel:
@@ -68,15 +68,15 @@ transform enter_c_right(time=2.0):
             repeat (int(time * 2.5))
 
 # Вход персонажа справа
-transform enter_right(time=2.0, xalign = 0.8):
-    xpos 1920 + 1000
-    parallel:
-        ease time xalign xalign
-    parallel:
-        block:
-            ease 0.2 yoffset 20
-            ease 0.2 yoffset 0
-            repeat (int(time * 2.5))
+# transform enter_right(time=2.0, xalign = 0.8):
+#     xpos 1920 + 1000
+#     parallel:
+#         ease time xalign xalign
+#     parallel:
+#         block:
+#             ease 0.2 yoffset 20
+#             ease 0.2 yoffset 0
+#             repeat (int(time * 2.5))
 
 transform jumping(times = 1, height = 20, speed = 0.3):
     yoffset 0

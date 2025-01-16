@@ -18,6 +18,9 @@ init:
         ysize 1.35
 
 screen main_menu():
+    on "show" action Function(renpy.play, sfx_chains, channel="sfx")
+    on "replace" action Function(renpy.play, sfx_chains, channel="sfx")
+
     tag menu
 
     add Parallax("menu_background_image", 3)

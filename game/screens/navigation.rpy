@@ -44,8 +44,6 @@ style navigation_button_text is gui_button_text
 style navigation_button:
     size_group "navigation"
     properties gui.button_properties("navigation_button")
-    hover_sound "audio/button_hover.ogg"
-    activate_sound "audio/button_click.ogg"
     xminimum 400
     xalign 0.5
 
@@ -60,7 +58,7 @@ transform menu_board_drop:
     ypos -900
     easein 0.5 ypos 0
     easeout 0.2 ypos -50
-    easein 0.15 ypos 0
+    easein 0.2 ypos 0
 
 transform menu_board_up:
     ypos 0

@@ -6,9 +6,12 @@ init -2:
     $_game_menu_screen = "pause_menu"
 
 screen pause_menu():
+    on "show" action Function(renpy.play, sfx_chains, channel="sfx")
+    on "replace" action Function(renpy.play, sfx_chains, channel="sfx")
+
     modal True
 
-    add Solid("#00000080")  # Затемнение фона
+    add Solid("#00000080")  # Затемнение
 
     add "menu_drop" at menu_board_drop:
         xalign 0.5
@@ -17,7 +20,7 @@ screen pause_menu():
     frame:
         style_prefix "pause_menu"
         background None
-        at pause_menu_board_drop
+        at menu_board_drop
         xanchor 0.5
         xpos 0.5
 

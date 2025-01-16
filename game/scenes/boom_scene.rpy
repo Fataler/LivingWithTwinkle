@@ -23,26 +23,28 @@ image roofs:
     ypos 0.5
 
 label boom_scene:
-$ _skipping = False
+    $ _skipping = False
 
-scene roofs with fade:
-    zoom 1.3
-    linear 2 zoom 1.0
-pause 2
+    play sfx ["<silence 1.9>", sfx_explosion]
 
-show boom:
-    pause 0.4
-    linear 1 ypos -70 alpha 0.0
+    scene roofs with fade:
+        zoom 1.3
+        linear 2 zoom 1.0
+    pause 2
 
-pause 0.1
-show roofs at punch_h(0.4, 8):
-    zoom 1.0
-    linear 0.1 zoom 1.1
-    linear 0.1 zoom 1
-    repeat 1
+    show boom:
+        pause 0.4
+        linear 1 ypos -70 alpha 0.0
 
-pause 0.6
+    pause 0.1
+    show roofs at punch_h(0.4, 8):
+        zoom 1.0
+        linear 0.1 zoom 1.1
+        linear 0.1 zoom 1
+        repeat 1
 
-pause 3
-$ _skipping = True
-return
+    pause 0.6
+
+    pause 3
+    $ _skipping = True
+    return

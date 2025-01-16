@@ -8,7 +8,9 @@
 ## элементами, которые трансклюдируются (помещаются) внутрь него.
 
 screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-
+    on "show" action Function(renpy.play, sfx_chains, channel="sfx")
+    on "replace" action Function(renpy.play, sfx_chains, channel="sfx")
+    
     style_prefix "game_menu"
 
     if main_menu:

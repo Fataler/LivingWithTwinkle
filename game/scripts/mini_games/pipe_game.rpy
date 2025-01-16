@@ -71,6 +71,8 @@ init python:
                 
             self.is_animating = True
             current = self.current_state[x][y]
+
+            renpy.play(sfx_ui_pipe_click, channel="ui")
             
             if current in PIPE_TYPES["straight"]:
                 self.current_state[x][y] = PIPE_TYPES["straight"][(PIPE_TYPES["straight"].index(current) + 1) % 2]
@@ -78,6 +80,7 @@ init python:
                 self.current_state[x][y] = PIPE_TYPES["corner"][(PIPE_TYPES["corner"].index(current) + 1) % 4]
             
             if self.check_solution():
+                renpy.play(sfx_ui_win, channel="ui")
                 renpy.set_screen_variable("show_success", True)
                 renpy.set_screen_variable("success_timer", 2.0)
         
@@ -187,7 +190,7 @@ transform pipe_rotate(old_rotation, new_rotation):
     linear 0.2 xzoom 0.9 yzoom 0.9
     linear 0.2 rotate get_shortest_rotation(old_rotation, new_rotation) xzoom 1.0 yzoom 1.0
 
-# Метка для тестирования
+# Для тестирования
 label test_pipe_game:
     $ result = renpy.call_screen("pipe_game")
     if result:

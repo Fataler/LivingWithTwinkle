@@ -22,45 +22,45 @@ transform loading_move:
             ease 1 yoffset 0
             repeat
 
-init python:
-    loading_frames = []
-    for j in range(3):  # по вертикали
-        for i in range(4):  # по горизонтали
-            loading_frames.append(
-                Transform(
-                    "gui/loading.png",
-                    crop=(697 * i, 800 * j, 697, 800)
-                )
-            )
+# init python:
+#     loading_frames = []
+#     for j in range(3):  # по вертикали
+#         for i in range(4):  # по горизонтали
+#             loading_frames.append(
+#                 Transform(
+#                     "gui/loading.png",
+#                     crop=(697 * i, 800 * j, 697, 800)
+#                 )
+#             )
 
-image loading_animation:
-    size (128, 128)
-    block:
-        loading_frames[0]
-        0.1
-        loading_frames[1]
-        0.1
-        loading_frames[2]
-        0.1
-        loading_frames[3]
-        0.1
-        loading_frames[4]
-        0.1
-        loading_frames[5]
-        0.1
-        loading_frames[6]
-        0.1
-        loading_frames[7]
-        0.1
-        loading_frames[8]
-        0.1
-        loading_frames[9]
-        0.1
-        loading_frames[10]
-        0.1
-        loading_frames[11]
-        0.1
-        repeat
+# image loading_animation:
+#     size (128, 128)
+#     block:
+#         loading_frames[0]
+#         0.1
+#         loading_frames[1]
+#         0.1
+#         loading_frames[2]
+#         0.1
+#         loading_frames[3]
+#         0.1
+#         loading_frames[4]
+#         0.1
+#         loading_frames[5]
+#         0.1
+#         loading_frames[6]
+#         0.1
+#         loading_frames[7]
+#         0.1
+#         loading_frames[8]
+#         0.1
+#         loading_frames[9]
+#         0.1
+#         loading_frames[10]
+#         0.1
+#         loading_frames[11]
+#         0.1
+#         repeat
 
 screen time_passed(text="Прошло времени..."):
     modal True
@@ -78,14 +78,14 @@ screen time_passed(text="Прошло времени..."):
             
             text text:
                 size 80
-                color "#ffffff"
+                color gui.text_color
                 text_align 0.5
                 at transform:
                     alpha 0.0
                     pause 1.0
                     ease 2.0 alpha 1.0
 
-        add "loading_animation":
+        add "b_fire":
             at loading_move
             at transform:
                 alpha 0.0

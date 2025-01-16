@@ -43,11 +43,11 @@ define gui.about = _p("""
 Использованные сторонние ресурсы лежат в файле {i}external_resources.txt{/i}.
 
 Авторы: \n
-{w=0}     - Zella - сценарий, фоны\n
-{w=0}     - Zabava - фоны, персонажи, CG\n
-{w=0}     - Remi - музыка, звуки\n
-{w=0}     - Featharine - концепт, персонажи, CG\n
-{w=0}     - Fataler - код, мини игры, верстка, анимации\n
+{w=0}     - Zabava ({a=https://vk.com/zabavius}ВК{/a}) - сценарий, фоны\n
+{w=0}     - Zella ({a=https://vk.com/zella_art}ВК{/a}, {a=https://www.twitch.tv/zellaross}Twitch{/a}) - фоны, персонажи, CG\n
+{w=0}     - Remi Prochet ({a=https://vk.com/remiprochet}ВК{/a}) - музыка, звуки\n
+{w=0}     - Featharine ({a=https://vk.com/sweet_sour_figures}ВК{/a})- концепт, персонажи, CG\n
+{w=0}     - Fataler ({a=https://steamcommunity.com/id/fataler/}Steam{/a})- код, мини игры, верстка, анимации\n
 {w=0}     - HolieKay - UI\n
 """)
 

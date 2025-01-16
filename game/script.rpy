@@ -10,8 +10,6 @@ label start:
     #window hide
     #$ renpy.call_screen("credits")
     
-    jump chapter1
-
     # jump horror_scene
 
     # scene bg room
@@ -25,10 +23,12 @@ label start:
     # scene bg_white with Dissolve(1)
     # #pause(1)
     # #scene bg castle with Dissolve(1)
-    # show f normal cat at face_left, enter_right(3.0)
+    # show f normal cat at face_left, enter_c_right(3.0)
     # F "я вернулся c котом"
     # F "И прошел всю игру..."
 
     # call screen credits
+    
+    jump chapter1
 
     return

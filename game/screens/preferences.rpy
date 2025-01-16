@@ -117,7 +117,7 @@ screen preferences():
                         spacing 10
                         label _("Шрифт")
 
-                        textbutton _("Default"):
+                        textbutton _("Оригинальный"):
                             action [Preference("font transform", None), 
                                     SetField(persistent, "current_font", "default"),
                                     Function(update_font_size)]
@@ -128,7 +128,7 @@ screen preferences():
                                     Function(update_font_size),
                                     Preference("font transform", "dejavusans")]
                             style_suffix "radio_button"
-                            #tooltip "Шрифт в Ren'Py по умолчанию"
+                            tooltip "Шрифт, используемый в \nRen'Py по умолчанию"
 
                     vbox:
                         spacing 10
@@ -144,6 +144,7 @@ screen preferences():
                         textbutton _("Большой"):
                             action Preference("font size", 1.2)
                             style_suffix "radio_button"
+                            tooltip "Внимание! \nТекст может начать выходить за рамки."
 
                     vbox:
                         spacing 10
@@ -164,12 +165,15 @@ screen preferences():
         timer 0.1 repeat True action Function(get_mouse)
         $ mx = mouse_xy[0]
         $ my = mouse_xy[1]
-        text tooltip:
+        frame:
             pos(mx, my)
             offset 50, 0
-            color gui.interface_text_color
-            size 35
-            at alpha_in(0.2)
+            background Frame("gui/frame.png", gui.frame_borders)
+            padding (20, 10)
+            text tooltip:
+                font gui.interface_text_font
+                color gui.interface_text_color
+                size 35
 
 init -2 python:
     def get_mouse():
