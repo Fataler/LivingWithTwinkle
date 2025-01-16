@@ -27,7 +27,7 @@ screen pause_menu():
             xpos 0
             ypos 210
 
-            text "ПАУЗА" size 70 xalign 0.5 color "#ffffff" style "pause_menu_button_text"
+            text "ПАУЗА" size 50 xalign 0.5 color gui.accent_color style "pause_menu_button_text"
             
             textbutton _("Сохранить") action [Hide("pause_menu"), ShowMenu("save")]
             textbutton _("Загрузить") action [Hide("pause_menu"), ShowMenu("load")]
@@ -39,7 +39,7 @@ screen pause_menu():
 style pause_menu_button is navigation_button
 
 style pause_menu_button_text is navigation_button_text:
-    size 40
+    size gui.interface_text_size
 
 transform pause_menu_board_drop(start_pos = -900):
     ypos start_pos

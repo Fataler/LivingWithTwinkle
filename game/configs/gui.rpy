@@ -26,17 +26,17 @@ define config.check_conflicting_properties = True
 ## Цвета текста в интерфейсе.
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#cc6600'
-
+define gui.accent_color = '#Ab9250'
+#hover = #c8ab5e
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
-define gui.idle_color = '#ffffff'
+define gui.idle_color = '#E0E0E0'
 
 ## Small_color используется в маленьком тексте, который должен быть ярче/темнее,
 ## для того, чтобы выделяться.
-define gui.idle_small_color = '#cfcdcd'
+define gui.idle_small_color = '#E0E0E0'
 
 ## Цвет, используемых в кнопках и панелях, когда они наведены.
-define gui.hover_color = '#cc6600'
+define gui.hover_color = '#Ab9250'
 
 ## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
 ## Кнопка может быть выбрана, если это текущий экран или текущее значение
@@ -44,16 +44,16 @@ define gui.hover_color = '#cc6600'
 define gui.selected_color = '#cccccc'
 
 ## Цвет, используемый текстовой кнопкой, когда она не может быть выбрана.
-define gui.insensitive_color = '#a9a7a77f'
+define gui.insensitive_color = '#f5f6f8ba'
 
 ## Цвета, используемые для частей панелей, которые не заполняются. Они
 ## используются не напрямую, а только при воссоздании файлов изображений.
 define gui.muted_color = '#e0a366'
 define gui.hover_muted_color = '#eac199'
 
-## Цвета, используемые в тексте диалогов и выборов.
-define gui.text_color = '#e9e9e9'
-define gui.interface_text_color = '#e9e9e9'
+## Цвета, используемые в E0E0E0 диалогов и выборов.
+define gui.text_color = '#F5F6F8'
+define gui.interface_text_color = '#F5F6F8'
 
 
 ## Шрифты и их размеры #########################################################
@@ -83,7 +83,7 @@ define gui.label_text_size = 36
 define gui.notify_text_size = 24
 
 ## Размер заголовка игры.
-define gui.title_text_size = 75
+define gui.title_text_size = 85
 
 
 ## Главное и игровое меню. #####################################################
@@ -357,7 +357,7 @@ define gui.history_spacing = 0
 define gui.history_name_xpos = 233
 define gui.history_name_ypos = 0
 define gui.history_name_width = 233
-define gui.history_name_xalign = 1.0
+define gui.history_name_xalign = 0.0
 
 ## Местоположение, ширина и выравнивание диалогового текста.
 define gui.history_text_xpos = 255

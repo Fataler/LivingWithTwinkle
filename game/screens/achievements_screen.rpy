@@ -57,15 +57,19 @@ screen achievements_screen():
                                     fit "contain"
                                     xalign 0.5
                                     yalign 0.5
-                            
+
                             vbox:
                                 spacing 5
                                 xfill True
                                 hbox:
                                     spacing 5
+                                    xfill True
                                     text ach.name style "achievement_name"
-                                    text "✔" style "achievement_check"
+                                    text "Получено" style "achievement_check"
+                                    
                                 text ach.description style "achievement_description"
+                            
+                    
 
             if locked_achievements:
                 text "Неполученные достижения:" style "achievements_group_header"
@@ -105,7 +109,7 @@ style achievements_stats_frame:
     margin (0, 0, 0, 20)
     xfill True
 
-style achievements_stats_text:
+style achievements_stats_text is gui_text:
     color "#ffffff"
     size 24
     xalign 0.5
@@ -125,17 +129,17 @@ style achievement_item_frame:
     xfill True
     margin (0, 0, 0, 10)
     
-style achievement_name:
-    color "#000000"
+style achievement_name is gui_text:
+    color gui.accent_color
     size 35
 
-style achievement_description:
-    color "#555555"
+style achievement_description is gui_text:
+    color gui.text_color
     size 24
 
-style achievements_group_header:
+style achievements_group_header is gui_text:
     size 36
-    color "#000000"
+    color gui.accent_color
     #padding (0, 20, 0, 10)
 
 style achievement_popup_frame:
@@ -150,11 +154,11 @@ style achievement_popup_title:
     size 20
 
 style achievement_popup_name:
-    color "#000000"
+    color gui.accent_color
     size 35
 
 style achievement_popup_description:
-    color "#555555"
+    color gui.text_color
     size 24
 
 style achievement_icon_frame:
@@ -166,10 +170,11 @@ style achievement_icon:
     xalign 0.5
     yalign 0.5
 
-style achievement_check:
-    color "#00ff00b2"
+style achievement_check is gui_text:
+    color gui.accent_color
     size 30
-    yoffset -5
+    xalign 1.0
+    yalign 0.5
 
 # Экран всплывающего уведомления о достижении
 screen achievement_popup(achievement):

@@ -39,6 +39,11 @@ image menu_drop:
     xanchor 0
     yanchor 0
 
+image screen_board:
+    "gui/game_screen_drop.png"
+    xanchor 0
+    yanchor 0
+
 ## Эффекты
 transform darken:
     matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.7)

@@ -6,6 +6,24 @@
 
 default mouse_xy = (0, 0)
 
+define persistent.current_font = "default"
+init python:
+    if persistent.current_font is None:
+        persistent.current_font = "default"
+
+    def update_font_size():
+        if (persistent.current_font == "default"):
+            style.navigation_button_text.size = 55
+            style.navigation_vbox.area = (0, 300, 700, 100)
+        else:
+            style.navigation_button_text.size = 40
+            style.navigation_vbox.area = (0, 330, 700, 100)
+        
+        style.rebuild()
+        renpy.restart_interaction()
+
+    config.start_callbacks.append(update_font_size)
+
 screen preferences():
 
     tag menu
@@ -31,13 +49,13 @@ screen preferences():
                 spacing 15
                 label _("Текст")
                 hbox:
-                    spacing 23
+                    spacing 100
                     xsize 1000
                     vbox:
                         spacing 15
-                        text _("Скорость текста")
-                        text _("Скорость авточтения")
-                        text _("Пропускать")
+                        text _("Скорость текста") style "label_bar_text"
+                        text _("Скорость авточтения") style "label_bar_text"
+                        text _("Пропускать") style "label_bar_text"
                     vbox:
                         spacing 15
                         xsize 525
@@ -53,16 +71,16 @@ screen preferences():
                 spacing 15
                 label _("Звук")
                 hbox:
-                    spacing 23
+                    spacing 100
                     xsize 1000
                     vbox:
                         spacing 15
                         if config.has_music:
-                            text _("Громкость музыки")
+                            text _("Громкость музыки") style "label_bar_text"
                         if config.has_sound:
-                            text _("Громкость звуков")
+                            text _("Громкость звуков") style "label_bar_text"
                         if config.has_voice:
-                            text _("Громкость голоса")
+                            text _("Громкость голоса") style "label_bar_text"
                     vbox:
                         spacing 15
                         xsize 525
@@ -100,13 +118,17 @@ screen preferences():
                         label _("Шрифт")
 
                         textbutton _("Default"):
-                            action Preference("font transform", None)
+                            action [Preference("font transform", None), 
+                                    SetField(persistent, "current_font", "default"),
+                                    Function(update_font_size)]
                             style_suffix "radio_button"
 
                         textbutton _("DejaVu Sans"):
-                            action Preference("font transform", "dejavusans")
+                            action [SetField(persistent, "current_font", "dejavusans"),
+                                    Function(update_font_size),
+                                    Preference("font transform", "dejavusans")]
                             style_suffix "radio_button"
-                            tooltip "Шрифт в Ren'Py по умолчанию"
+                            #tooltip "Шрифт в Ren'Py по умолчанию"
 
                     vbox:
                         spacing 10
@@ -160,6 +182,7 @@ style pref_vbox is vbox
 
 style radio_label is pref_label
 style radio_label_text is pref_label_text
+style label_bar_text is pref_label_text
 style radio_button is gui_button
 style radio_button_text is gui_button_text
 style radio_vbox is pref_vbox
@@ -186,6 +209,10 @@ style pref_label:
 
 style pref_label_text:
     yalign 1.0
+
+style label_bar_text:
+    color gui.interface_text_color
+    font gui.interface_text_font
 
 style pref_vbox:
     xsize 338

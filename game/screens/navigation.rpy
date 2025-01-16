@@ -10,8 +10,7 @@ screen navigation():
         
     vbox at menu_items_appear:
         style_prefix "navigation"
-        xpos 150
-        ypos 290
+
         spacing gui.navigation_spacing
         
         if main_menu:
@@ -36,6 +35,9 @@ screen navigation():
         if renpy.variant("pc"):
             textbutton _("Выход") action Quit(confirm=not main_menu)
 
+style navigation_vbox :
+    area (0, 300, 700, 100)
+
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 
@@ -49,10 +51,9 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
-    #font "gui/fonts/TippytoesRegular.ttf"
-    color "#ffffff"
-    hover_color "#b29175"
-    size 60
+    color gui.text_color
+    hover_color gui.accent_color
+    size 70
     xalign 0.5
 
 transform menu_board_drop:

@@ -115,6 +115,10 @@ screen say(who, what):
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
 
+    if not (config.developer):
+        key "mouseup_4" action ShowMenu("history")
+        key "K_PAGEUP" action ShowMenu("history")
+
 
 ## Делает namebox доступным для стилизации через объект Character.
 init python:
@@ -261,13 +265,16 @@ screen quick_menu():
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
 ## время, если только игрок не скроет интерфейс.
 init python:
-    # Убираем стандартное быстрое меню из оверлеев
-    if "quick_menu" in config.overlay_screens:
-        config.overlay_screens.remove("quick_menu")
+    # Убираем стандартное быстрое меню
+    # if "quick_menu" in config.overlay_screens:
+    #     config.overlay_screens.remove("quick_menu")
     
-    # Добавляем наше новое меню
+    # Добавляем новое меню
     # if "menu_button" not in config.overlay_screens:
     #     config.overlay_screens.append("menu_button")
+
+    if "quick_menu" not in config.overlay_screens:
+        config.overlay_screens.append("quick_menu")
 
 default quick_menu = False
 
@@ -279,144 +286,6 @@ style quick_button:
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
-
-
-################################################################################
-## Экраны Главного и Игрового меню
-################################################################################
-
-## Экран игрового меню #########################################################
-##
-## Всё это показывает основную, обобщённую структуру экрана игрового меню. Он
-## вызывается с экраном заголовка и показывает фон, заголовок и навигацию.
-##
-## Параметр scroll может быть None или один из "viewport" или "vpgrid". Этот
-## экран предназначен для использования с одним или несколькими дочерними
-## элементами, которые трансклюдируются (помещаются) внутрь него.
-
-screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-
-    style_prefix "game_menu"
-
-    if main_menu:
-        add Parallax("menu_background_image", 3)
-        add Parallax("menu_tower_image", 5)
-        add Parallax("menu_clouds_image", 15)
-    else:
-        add "bg_black_t_50"
-
-    frame:
-        style "game_menu_outer_frame"
-
-        hbox:
-
-            ## Резервирует пространство для навигации.
-            frame:
-                style "game_menu_navigation_frame"
-
-            frame:
-                style "game_menu_content_frame"
-
-                if scroll == "viewport":
-
-                    viewport:
-                        yinitial yinitial
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        vbox:
-                            spacing spacing
-
-                            transclude
-
-                elif scroll == "vpgrid":
-
-                    vpgrid:
-                        cols 1
-                        yinitial yinitial
-
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        spacing spacing
-
-                        transclude
-
-                else:
-
-                    transclude
-
-    #use navigation
-
-    textbutton _("Вернуться"):
-        style "return_button"
-
-        action Return()
-
-    label title
-
-    if main_menu:
-        key "game_menu" action ShowMenu("main_menu")
-
-
-style game_menu_outer_frame is empty
-style game_menu_navigation_frame is empty
-style game_menu_content_frame is empty
-style game_menu_viewport is gui_viewport
-style game_menu_side is gui_side
-style game_menu_scrollbar is gui_vscrollbar
-
-style game_menu_label is gui_label
-style game_menu_label_text is gui_label_text
-
-style return_button is gui_button
-style return_button_text is navigation_button_text
-
-style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
-
-    #background "gui/overlay/game_menu.png"
-
-style game_menu_navigation_frame:
-    xsize 420
-    yfill True
-
-style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
-
-style game_menu_viewport:
-    xsize 1380
-
-style game_menu_vscrollbar:
-    unscrollable gui.unscrollable
-
-style game_menu_side:
-    spacing 15
-
-style game_menu_label:
-    xpos 75
-    ysize 180
-
-style game_menu_label_text:
-    size gui.title_text_size
-    color gui.accent_color
-    yalign 0.5
-
-style return_button:
-    xpos gui.navigation_xpos
-    yalign 1.0
-    yoffset -45
 
 
 ## Экран Об игре ###############################################################
@@ -644,39 +513,29 @@ style slider_vbox:
 ## https://www.renpy.org/doc/html/history.html
 
 screen history():
-
     tag menu
-
-    ## Избегайте предсказывания этого экрана, так как он может быть очень
-    ## массивным.
     predict False
 
-    use game_menu(_("История"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0, spacing=gui.history_spacing):
-
+    use game_menu(_("История"), scroll=("viewport"), yinitial=1.0, spacing=gui.history_spacing):
         style_prefix "history"
 
         for h in _history_list:
-
             window:
-
-                ## Это всё правильно уравняет, если history_height будет
-                ## установлен на None.
-                has fixed:
-                    yfit True
+                has vbox  # Используем vbox вместо fixed
+                spacing 10  # Отступ между именем и текстом
 
                 if h.who:
-
                     label h.who:
                         style "history_name"
                         substitute False
-
-                        ## Берёт цвет из who параметра персонажа, если он
-                        ## установлен.
                         if "color" in h.who_args:
                             text_color h.who_args["color"]
 
                 $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                $ what = what.replace("…", "...")
+                $ what = what.replace("—", "-")
                 text what:
+                    style "history_text"
                     substitute False
 
         if not _history_list:
@@ -699,26 +558,24 @@ style history_label_text is gui_label_text
 
 style history_window:
     xfill True
-    ysize gui.history_height
+    ysize None  # Убираем фиксированную высоту
+    padding (10, 20)
 
 style history_name:
-    xpos gui.history_name_xpos
-    xanchor gui.history_name_xalign
-    ypos gui.history_name_ypos
-    xsize gui.history_name_width
+    xpos 0
+    xsize 200
+    xalign 0
+
+style history_text:
+    xpos 70
+    xsize 900
+    size 40
+    #font gui.text_font
 
 style history_name_text:
     min_width gui.history_name_width
     textalign gui.history_name_xalign
-
-style history_text:
-    xpos gui.history_text_xpos
-    ypos gui.history_text_ypos
-    xanchor gui.history_text_xalign
-    xsize gui.history_text_width
-    min_width gui.history_text_width
-    textalign gui.history_text_xalign
-    layout ("subtitle" if gui.history_text_xalign else "tex")
+    size 50
 
 style history_label:
     xfill True
@@ -946,12 +803,12 @@ style confirm_frame:
     padding gui.confirm_frame_borders.padding
     xalign .5
     yalign .5
-    minimum (1398, 250)
+    minimum (700, 250)
 
 style confirm_prompt_text:
     textalign 0.5
     layout "subtitle"
-    color "#FFF"
+    color gui.text_color
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
@@ -1052,6 +909,7 @@ style notify_frame:
 
 style notify_text:
     properties gui.text_properties("notify")
+    color "#000"
 
 
 ## Экран NVL ###################################################################
