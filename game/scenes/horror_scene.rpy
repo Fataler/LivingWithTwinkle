@@ -84,6 +84,8 @@ init python:
 label horror_scene:
     $ _skipping = False
     
+    stop music 
+    play sound sfx_nightmare
     scene bg_houses:
         xanchor 0.5
         yanchor 0.5

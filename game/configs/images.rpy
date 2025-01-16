@@ -10,6 +10,14 @@ image bg_ptichnik  = "images/bg/golubi.png"
 image bg_pereulok  = "images/bg/pereulok.png"
 image bg_krishi    = "images/bg/krishi.jpg"
 
+image bg_bashnya_arrow:
+    "images/bg/clock_arrow_1.png"
+    xanchor 1.0
+    yanchor 1.0
+
+image kabinet_table:
+    "images/bg/table.png"
+
 ## Общие изображения
 image bg_black = Solid("#000")
 image bg_white = Solid("#fff")

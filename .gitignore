@@ -44,3 +44,5 @@ game/renpy_warp_*.rpe.py
 *.rpymc
 *.txt
 *.json
+
+!game/external_resources.txt

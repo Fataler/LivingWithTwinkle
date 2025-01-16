@@ -62,7 +62,7 @@ define gui.interface_text_color = '#e9e9e9'
 define gui.text_font = "gui/fonts/EBGaramond08-Regular.otf"
 
 ## Шрифт, используемый именами персонажей.
-define gui.name_text_font = "gui/fonts/Philosopher-Bold.ttf"
+define gui.name_text_font = "gui/fonts/EBGaramond08-Regular.otf"
 
 ## Шрифт, используемый текстом вне игры.
 define gui.interface_text_font = "gui/fonts/TippytoesRegular.ttf"

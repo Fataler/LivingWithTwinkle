@@ -92,3 +92,9 @@ screen time_passed(text="Прошло времени..."):
                 ease 2.0 alpha 1.0
 
     timer 7.0 action Return()
+
+label time_passed(message = "Некоторое время спустя"):
+    call screen time_passed(message)
+    scene bg_black
+    pause 1
+return

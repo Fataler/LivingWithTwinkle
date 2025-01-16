@@ -106,6 +106,29 @@ image fel_fire:
     pause 0.13
     repeat
 
+image fel_table_fire:
+    "images/characters/felix_table/fire_01.png"
+    pause 0.13
+    "images/characters/felix_table/fire_02.png"
+    pause 0.13
+    "images/characters/felix_table/fire_03.png"
+    pause 0.13
+    repeat
+
+layeredimage fel_table:
+    always:
+        "images/characters/felix_table/gg_base.png"
+    always:
+        "fel_table_fire"
+
+    group hands:
+        attribute base_hands default:
+            "images/characters/felix_table/gg_hands.png"
+    
+    group face:
+        attribute base_face default:
+            "images/characters/felix_table/gg_face_norm.png"
+
 layeredimage fel:
     always:
         "images/characters/felix/gg_main.png"

@@ -1,3 +1,6 @@
+transform bandit_c_left:
+    xalign 0
+    yalign 1.0
 #common
 transform c_left:
     xalign 0.1
@@ -13,12 +16,6 @@ transform face_left:
 transform face_right:
     xzoom 1.0
 
-transform move_by(x_offset=0, y_offset=0, duration=0.3):
-    ease duration xoffset (self.xoffset + x_offset) yoffset (self.yoffset + y_offset)
-
-transform move_to(x_offset=0, y_offset=0, duration=0.3):
-    ease duration xoffset x_offset yoffset y_offset
-
 # Уход персонажа за левый край экрана
 transform exit_left(time=2.0):
     parallel:
@@ -30,9 +27,9 @@ transform exit_left(time=2.0):
             repeat (int(time * 2.5))
 
 # Уход персонажа за правый край экрана
-transform exit_right(time=2.0):
+transform exit_right(time=4.0):
     parallel:
-        ease time xpos 2500
+        ease time xpos 3000
     parallel:
         block:
             ease 0.2 yoffset 20
@@ -44,6 +41,26 @@ transform enter_left(time=2.0):
     xpos -1000
     parallel:
         ease time xalign 0.2
+    parallel:
+        block:
+            ease 0.2 yoffset 20
+            ease 0.2 yoffset 0
+            repeat (int(time * 2.5))
+
+transform enter_c_left(time=2.0):
+    xpos -1000
+    parallel:
+        ease time xalign 0.1
+    parallel:
+        block:
+            ease 0.2 yoffset 20
+            ease 0.2 yoffset 0
+            repeat (int(time * 2.5))
+
+transform enter_c_right(time=2.0):
+    xpos 1920 + 1000
+    parallel:
+        ease time xalign 0.95
     parallel:
         block:
             ease 0.2 yoffset 20
@@ -124,3 +141,59 @@ transform punch_h(duration=0.1, strength=10):
 transform hide_after_pause(time = 1, alpha_time = 0.1):
     pause time
     linear alpha_time alpha 0.0
+
+transform giggle(height=5, shake=3, repeats=3, speed=0.15):
+    parallel:
+        ease speed yoffset height
+        ease speed yoffset 0
+        repeat repeats
+    parallel:
+        ease speed*0.7 xoffset shake
+        ease speed*0.7 xoffset -shake
+        repeat (repeats + 1)
+
+transform fear(height=10, shake=5, repeats=2, fade=0.2):
+    parallel:
+        ease 0.2 yoffset height
+        ease 0.2 yoffset 0
+        repeat repeats
+    parallel:
+        ease 0.15 xoffset shake
+        ease 0.15 xoffset -shake
+        repeat (repeats + 1)
+
+transform joy(height=10, shake=3, repeats=2, speed=0.15):
+    parallel:
+        ease speed yoffset height
+        ease speed yoffset 0
+        repeat repeats
+    parallel:
+        ease speed*0.7 xoffset shake
+        ease speed*0.7 xoffset -shake
+        repeat repeats
+
+transform scared(height=30, speed=0.15):
+    yoffset 0
+    ease speed yoffset height*0.7
+    ease speed*1.5 yoffset 0
+    ease speed*0.5 yoffset height*0.3
+    ease speed yoffset 0
+
+transform angry(height=8, shake=5, repeats=3, speed=0.1):
+    parallel:
+        ease speed yoffset height
+        ease speed yoffset 0
+        repeat repeats
+    parallel:
+        ease speed*0.5 xoffset -shake
+        ease speed*0.5 xoffset shake
+        repeat (repeats * 2)
+
+transform flipping(repeats=3, pause_time=0.9, flip_time=0.3):
+    xzoom 1.0
+    block:
+        pause pause_time
+        xzoom -1.0
+        pause pause_time
+        xzoom 1.0
+        repeat repeats
