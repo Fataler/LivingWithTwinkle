@@ -2,13 +2,17 @@
 
 ## Определения фоновых изображений
 image bg_bashnya   = "images/bg/bashnya.png"
-image bg_vhod      = "images/bg/vhod.jpg"
-image bg_koridor   = "images/bg/koridor.jpg"
+image bg_vhod      = "images/bg/vhod.png"
+image bg_koridor   = "images/bg/koridor.png"
+image bg_podval    = "images/bg/podval.png"
 image bg_kabinet   = "images/bg/kabinet.png"
-image bg_hall      = "images/bg/hall.jpg"
-image bg_ptichnik  = "images/bg/golubi.png"
+image bg_hall      = "images/bg/hall.png"
+image bg_ptichnik  = "images/bg/Ptici_1.png"
+image bg_ptichnik2 = "images/bg/Ptici_2.png"
 image bg_pereulok  = "images/bg/pereulok.png"
-image bg_krishi    = "images/bg/krishi.jpg"
+image bg_krishi    = "images/bg/krishi.png"
+
+image cg_1         = "images/cg_1.png"
 
 image bg_bashnya_arrow:
     "images/bg/clock_arrow_1.png"

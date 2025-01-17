@@ -1,19 +1,16 @@
-init python:
-    # Отключаем стандартное меню по ПКМ
-    config.game_menu_action = None
+#init python:
+    # config.game_menu_action = None
     
-    # Состояние меню (открыто/закрыто)
-    menu_is_open = False
+    # menu_is_open = False
     
-    def toggle_game_menu():
-        global menu_is_open
-        menu_is_open = not menu_is_open
-        if menu_is_open:
-            renpy.show_screen("game_menu_panel")
-        else:
-            renpy.hide_screen("game_menu_panel")
+    # def toggle_game_menu():
+    #     global menu_is_open
+    #     menu_is_open = not menu_is_open
+    #     if menu_is_open:
+    #         renpy.show_screen("game_menu_panel")
+    #     else:
+    #         renpy.hide_screen("game_menu_panel")
 
-# Определение стилей
 style game_menu_button:
     background "#2222224D"
     padding (20, 10)
@@ -32,11 +29,11 @@ style game_menu_button_text:
 # Трансформы для анимации
 transform menu_appear:
     on show:
-        ypos 1.3  # Начинаем ниже экрана (130%)
-        linear 0.3 ypos 1.0  # Выезжаем к нижней границе
+        ypos 1.3
+        linear 0.3 ypos 1.0 
     on hide:
         ypos 1.0
-        linear 0.3 ypos 1.3  # Уходим за пределы экрана
+        linear 0.3 ypos 1.3
 
 # Кнопка вызова меню
 screen menu_button():
@@ -74,5 +71,5 @@ screen game_menu_panel():
             textbutton _("История") style "game_menu_button" action ShowMenu("history")
             textbutton _("Меню") style "game_menu_button" action ShowMenu("pause_menu")
 # Переопределяем стандартный quick_menu screen, чтобы скрыть стандартные кнопки
-screen quick_menu():
-    pass
+# screen quick_menu():
+#     pass

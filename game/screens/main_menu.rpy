@@ -31,10 +31,10 @@ screen main_menu():
 
     use real_clock
 
-    imagebutton idle "gui/chapel.jpg":
+    imagebutton idle "gui/chapel.png":#im.Scale("gui/chapel.png", 50, 50):
         action OpenURL('https://vk.com/chapel_jam')
-        xalign 0.9
-        yalign 0.85
+        xalign 0.95
+        yalign 0.9
         at hover_scale
 
     if show_main_menu_fade:

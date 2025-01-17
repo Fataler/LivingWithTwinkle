@@ -249,8 +249,7 @@ screen quick_menu():
     ## Гарантирует, что оно появляется поверх других экранов.
     zorder 100
 
-    if quick_menu:
-
+    if quick_menu and _window:
         hbox:
             style_prefix "quick"
 
@@ -262,6 +261,7 @@ screen quick_menu():
             textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Авто") action Preference("auto-forward", "toggle")
             textbutton _("Сохранить") action ShowMenu('save')
+            textbutton _("Пауза") action ShowMenu('pause_menu')
             #textbutton _("Б.Сохр") action QuickSave()
             #textbutton _("Б.Загр") action QuickLoad()
             #textbutton _("Опции") action ShowMenu('preferences')
@@ -270,6 +270,8 @@ screen quick_menu():
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
 ## время, если только игрок не скроет интерфейс.
 init python:
+    if "quick_menu" not in config.overlay_screens:
+        config.overlay_screens.append("quick_menu")
     # Убираем стандартное быстрое меню
     # if "quick_menu" in config.overlay_screens:
     #     config.overlay_screens.remove("quick_menu")
@@ -278,10 +280,7 @@ init python:
     # if "menu_button" not in config.overlay_screens:
     #     config.overlay_screens.append("menu_button")
 
-    if "quick_menu" not in config.overlay_screens:
-        config.overlay_screens.append("quick_menu")
-
-default quick_menu = False
+default quick_menu = True
 
 style quick_button is default
 style quick_button_text is button_text
@@ -1064,8 +1063,6 @@ screen bubble(who, what):
 
         text what:
             id "what"
-
-        #use menu_button
 
 style bubble_window is empty
 style bubble_namebox is empty

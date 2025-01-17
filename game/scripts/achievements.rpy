@@ -49,6 +49,7 @@ init python:
     SECOND_CHAPTER = "second_chapter"
     GAME_COMPLETED = "game_completed"
     THANK_YOU = "thank_you"
+    HOLD_THE_DOOR = "hold_the_door"
 
     # Список достижений
     achievements = {
@@ -59,12 +60,6 @@ init python:
             False,
             "images/achievements/achievement.png"
         ),
-        THANK_YOU: Achievement(
-            THANK_YOU,
-            "Спасибо за проявленный интерес!",
-            "Зайти в раздел \"Об игре\"",
-            True
-        ),
         # WOLF_HUNTER: Achievement(
         #     WOLF_HUNTER,
         #     "Логово найдено",
@@ -72,12 +67,6 @@ init python:
         #     False,
         #     icon="images/achievements/wolf.png"
         # ),
-        PIPE_MASTER: Achievement(
-            PIPE_MASTER,
-            "Марио?",
-            "Самостоятельно разберитесь с трубами",
-            True
-        ),
         FIRST_CHAPTER: Achievement(
             FIRST_CHAPTER,
             "Первая глава",
@@ -95,6 +84,24 @@ init python:
             "Третья глава",
             "Пройдите всю игру",
             False
+        ),
+        THANK_YOU: Achievement(
+            THANK_YOU,
+            "Посетить \"Об игре\"",
+            "Спасибо за проявленный интерес!",
+            True
+        ),
+        PIPE_MASTER: Achievement(
+            PIPE_MASTER,
+            "Марио?",
+            "Самостоятельно разберитесь с трубами",
+            True
+        ),
+        HOLD_THE_DOOR: Achievement(
+            HOLD_THE_DOOR,
+            "Затворник",
+            "Игнорируйте Клем до последнего",
+            True
         )
     }
 

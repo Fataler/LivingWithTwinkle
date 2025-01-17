@@ -23,6 +23,7 @@ define config.developer = True
 define gui.show_name = True
 
 define config.rollback_enabled = True if config.developer else False
+define config.default_fullscreen = False if config.developer else True
 
 
 ## Версия игры.
@@ -70,7 +71,7 @@ define config.has_music = True
 define config.has_voice = False
 
 define config.default_sfx_volume = 0.5
-define config.default_music_volume = 0.4
+define config.default_music_volume = 0.5
 
 ## Чтобы разрешить игроку тестировать громкость на звуковом или голосовом
 ## каналах, раскомментируйте строчку и настройте пример звука для прослушивания.
@@ -83,7 +84,7 @@ define config.default_music_volume = 0.4
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = music_tower if not persistent.game_completed else music_gratification
 
 
 ## Переходы ####################################################################
@@ -110,8 +111,7 @@ define config.after_load_transition = Dissolve(.2)
 
 ## Используется при входе в главное меню после того, как игра закончится.
 
-define config.end_game_transition = Dissolve(.2)
-
+define config.end_game_transition = Dissolve(1)
 
 ## Переменная, устанавливающая переход, когда старт игры не существует. Вместо
 ## неё используйте функцию with после показа начальной сценки.
@@ -142,13 +142,15 @@ define config.window_hide_transition = Dissolve(.2)
 ## в то время как любая другая цифра — это количество символов, печатаемых в
 ## секунду.
 
-default preferences.text_cps = 30
+default preferences.text_cps = 40
 
 ## Стандартная задержка авточтения. Большие значения означают долгие ожидания, а
 ## от 0 до 30 — вполне допустимый диапазон.
 
 default preferences.afm_time = 15
 
+define config.default_text_cps = 40
+define config.default_afm_time = 15
 
 ## Максимальное количество страниц сохранений
 

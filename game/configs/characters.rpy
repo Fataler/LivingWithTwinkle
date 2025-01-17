@@ -1,11 +1,11 @@
 # Создаем анимацию для индикатора
 image ctc_rotate:
-    "gui/cog.png"
+    "gui/bubble.png"
     size (32, 32)
     anchor (0.5, 0.5)  # центр вращения
     alpha 1
-    linear 1 alpha 0.8
-    linear 1 alpha 1
+    linear 2 alpha 0.6
+    linear 2 alpha 1
     #rotate 0
     #linear 8.0 rotate 360
     repeat
@@ -14,7 +14,7 @@ define ctc_indicator = Animation("ctc_rotate")
 
 image ctc_mind:
     "gui/ctc_mind.png"
-    size (50, 50)
+    size (32, 32)
     anchor (0.5, 0.5)  # центр вращения
     alpha 1
     linear 2 alpha 0.6
@@ -204,78 +204,129 @@ layeredimage f:
             "images/characters/felix/f23.png"
 
 # Клементина
+image k_composite_01 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_01.png",
+    (0, 0), "images/characters/klem/k_01.png")
+
+image k_composite_14 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_01.png",
+    (0, 0), "images/characters/klem/k_02.png")
+
+image k_composite_15 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_01.png",
+    (0, 0), "images/characters/klem/k_03.png")
+
+image k_composite_03 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_07.png",
+    (0, 0), "images/characters/klem/k_04.png")
+
+image k_composite_04 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_07.png",
+    (0, 0), "images/characters/klem/k_05.png")
+
+image k_composite_06 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_10.png",
+    (0, 0), "images/characters/klem/k_06.png")
+
+image k_composite_12 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_10.png",
+    (0, 0), "images/characters/klem/k_07.png")
+
+image k_composite_06_cry = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_10.png",
+    (0, 0), "images/characters/klem/k_08.png")
+
+image k_composite_06_letters = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_11.png",
+    (0, 0), "images/characters/klem/k_06.png")
+
+image k_composite_12_letters = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_11.png",
+    (0, 0), "images/characters/klem/k_07.png")
+
+image k_composite_21 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_07.png",
+    (0, 0), "images/characters/klem/k_04.png")
+
+image k_composite_28 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_16.png",
+    (0, 0), "images/characters/klem/k_09.png")
+
+image k_composite_29 = Composite((970, 1080),
+    (0, 0), "images/characters/klem/k_b_17.png",
+    (0, 0), "images/characters/klem/k_09.png")
 
 layeredimage k:
-    # group base:
-    #     attribute base default
-
     group pose:
         attribute 01:#look_around:
-            "images/characters/clementine/k01.png"
+            "k_composite_01"
         attribute 14:#look_eyes:
-            "images/characters/clementine/k14.png"
+            "k_composite_14"
         attribute 15:#look_laugh:
-            "images/characters/clementine/k15.png"
+            "k_composite_15"
         attribute 23:#look_angry:
-            "images/characters/clementine/k23.png"
-        attribute 27:#look_bit:
-            "images/characters/clementine/k27.png"
+            "images/characters/klem/k_b_02.png"
             
         attribute 02:#think default:
-            "images/characters/clementine/k02.png"
+            "images/characters/klem/k_b_03.png"
         attribute 05:#point:
-            "images/characters/clementine/k05.png"
+            "images/characters/klem/k_b_04.png"
         attribute 11:#cheek:
-            "images/characters/clementine/k11.png"
+            "images/characters/klem/k_b_05.png"
         attribute 13:#cheek_laugh:
-            "images/characters/clementine/k13.png"
+            "images/characters/klem/k_b_06.png"
             
         attribute 03:#confident:
-            "images/characters/clementine/k03.png"
+            "k_composite_03"
         attribute 04:#unhappy:
-            "images/characters/clementine/k04.png"
+            "k_composite_04"
+
         attribute 09:#watch:
-            "images/characters/clementine/k09.png"
+            "images/characters/klem/k_b_08.png"
         attribute 16:#money:
-            "images/characters/clementine/k16.png"
+            "images/characters/klem/k_b_09.png"
             
         attribute 06:#shy default:
-            "images/characters/clementine/k06.png"
+            "k_composite_06"
         attribute 12:#shy_smile:
-            "images/characters/clementine/k12.png"
-        attribute 06_cry:#shy_cry:
-            "images/characters/clementine/k06_cry.png"
-        attribute 06_letters:#shy_letters:
-            "images/characters/clementine/k06_letters.png"
+            "k_composite_12"
+        attribute 06_cry:#shy_cry: #найти где использовать
+            "k_composite_06_cry"
+        attribute 06_letters:#shy_letters: #найти где использовать
+            "k_composite_06_letters"
+
+        attribute 12_letters:# #найти где использовать
+            "k_composite_12_letters"
             
-        attribute 07:#scared:
-            "images/characters/clementine/k07.png"
-        attribute 08:#power:
-            "images/characters/clementine/k08.png"
+        attribute 07:#scared: # не нарисованны
+            "images/characters/klem/k07.png"
+        attribute 08:#power: # не нарисованны
+            "images/characters/klem/k08.png"
             
         attribute 10:#leave:
-            "images/characters/clementine/k10.png"
+            "images/characters/klem/k_b_12.png"
         attribute 24:#pull:
-            "images/characters/clementine/k24.png"
+            "images/characters/klem/k_b_12.png"
             
         attribute 17:#broom_down:
-            "images/characters/clementine/k17.png"
+            "images/characters/klem/k_b_13.png"
         attribute 18:#broom_wave:
-            "images/characters/clementine/k18.png"
-        attribute 19:#broom_wave:
-            "images/characters/clementine/k19.png"
+            "images/characters/klem/k_b_14.png"
             
         attribute 20:#watch_you:
-            "images/characters/clementine/k20.png"
+            "images/characters/klem/k20.png" #не нарисованны
         attribute 25:#catch:
-            "images/characters/clementine/k25.png"
+            "images/characters/klem/k25.png" # не нарисованны
         attribute 26:#facepalm:
-            "images/characters/clementine/k26.png"
+            "images/characters/klem/k_b_15.png"
             
         attribute 21:#laugh:
-            "images/characters/clementine/k21.png"
-        attribute 22:#fake_scared:
-            "images/characters/clementine/k22.png"
+            "k_composite_21"
+
+        attribute 28:#laugh:
+            "k_composite_28"
+        attribute 29:#laugh:
+            "k_composite_29"
 
 # Секретарь
 

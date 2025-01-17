@@ -30,7 +30,7 @@ screen navigation():
         elif not main_menu:
             textbutton _("Главное меню") action MainMenu()
 
-        textbutton _("Об игре") action ShowMenu("about")
+        textbutton _("Об игре") action [Function(unlock_achievement, THANK_YOU),ShowMenu("about")]
 
         if renpy.variant("pc"):
             textbutton _("Выход") action Quit(confirm=not main_menu)

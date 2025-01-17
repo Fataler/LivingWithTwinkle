@@ -21,7 +21,7 @@ init python:
             
             y = height - (st * speed)
             
-            # Если текст полностью ушел вверх, фиксируем
+            # фиксируем сли текст полностью ушел вверх
             if y < -text_render.height:
                 self.finished = True
                 y = -text_render.height 
@@ -34,7 +34,9 @@ init python:
 
 screen credits():
     modal True
-    default credits_obj = Credits("""{size=65}Living With Fire{/size}
+    default credits_obj = Credits("""{size=65}Жизнь с огоньком{/size}
+
+Команда:
 
 {size=45}Разработчик{/size}
 Руслан Кучеренко
@@ -48,18 +50,21 @@ Zabava
 {size=45}Музыка{/size}
 Remi
 
-{size=45}Тестировщики{/size}
-Коты Тигр и Лиса
+Отдельная благодарность:
 
-Ну и тут в общем 
-накидываем каких-то кеков
+Разработчица новелы "Инцелотред"
+Редактура
+Тестирование
 
-Нужно будет завести в сценарии 
-и продумать
+{size=45}Коты Тигр и Лиса{/size}
+Катание по клавиатуре
+Громкое мяуканье
+Моральная поддержка
 
-CG и наброски будем крутить
-по бокам
-""", duration=25.0)
+
+
+Продолжение слудует...
+""", duration=40.0)
     
     fixed:
         xfill True

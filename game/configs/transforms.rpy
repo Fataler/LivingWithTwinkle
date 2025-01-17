@@ -67,6 +67,17 @@ transform enter_c_right(time=2.0, from_left=False):
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
+transform move_step(xoffset=-100):
+    parallel:
+        xoffset 0
+        linear 0.3 xoffset xoffset
+    parallel:
+        yoffset 0
+        ease 0.3/2 yoffset 10
+        ease 0.3/2 yoffset 0
+        repeat 2
+
+
 # Вход персонажа справа
 # transform enter_right(time=2.0, xalign = 0.8):
 #     xpos 1920 + 1000

@@ -2,7 +2,8 @@ image memo1 = "images/memo_1.png"
 image memo2 = "images/memo_2.png"
 image memo3 = "images/memo_3.png"
 
-define memo_time = 3
+define memo_time = 3.5
+define animation_time = 2.5
 
 transform memo_transform:
     yanchor 0.5
@@ -23,15 +24,15 @@ show bg_black_t_50 at alpha_in(1)
 pause 1
 
 show memo1 at memo_transform
-pause memo_time + 2
+pause memo_time + animation_time
 hide memo1
 
 show memo2 at memo_transform
-pause memo_time + 2
+pause memo_time + animation_time
 hide memo2
 
 show memo3 at memo_transform
-pause memo_time + 2
+pause memo_time + animation_time
 hide memo3
 
 show bg_black_t_50 at alpha_out(1)

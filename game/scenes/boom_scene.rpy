@@ -25,13 +25,12 @@ image roofs:
 label boom_scene:
     $ _skipping = False
 
-    play sfx ["<silence 1.9>", sfx_explosion]
-
     scene roofs with fade:
         zoom 1.3
         linear 2 zoom 1.0
     pause 2
 
+    play sfx sfx_explosion
     show boom:
         pause 0.4
         linear 1 ypos -70 alpha 0.0

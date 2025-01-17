@@ -94,7 +94,14 @@ screen time_passed(text="Прошло времени..."):
     timer 7.0 action Return()
 
 label time_passed(message = "Некоторое время спустя"):
+    window hide
+    stop music
+    stop sound
+
+    play sound sfx_timeskip
     call screen time_passed(message)
     scene bg_black
     pause 1
+    stop sound
+    window show
 return
