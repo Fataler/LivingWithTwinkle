@@ -1,7 +1,7 @@
 init python:
     PIPE_TYPES = {
         "straight": ["-", "|"],  # горизонтальная и вертикальная
-        "corner": ["└", "┌", "┐", "┘"],  # угловые трубы, начиная с вниз-вправо
+        "corner": ["└", "┌", "┐", "┘"],  # угловые трубы
     }
 
     def get_shortest_rotation(current, target):
@@ -50,7 +50,7 @@ init python:
             return initial_state
         
         def get_pipe_rotation(self, pipe_type):
-            # Возвращаем угол поворота в градусах для спрайта
+            # угол поворота в градусах для спрайта
             if pipe_type in PIPE_TYPES["straight"]:
                 return PIPE_TYPES["straight"].index(pipe_type) * 90
             elif pipe_type in PIPE_TYPES["corner"]:
@@ -58,7 +58,7 @@ init python:
             return 0
         
         def get_pipe_image(self, pipe_type):
-            # Возвращаем имя спрайта и его поворот
+            # имя спрайта и его поворот
             if pipe_type in PIPE_TYPES["straight"]:
                 return "images/mini_games/pipes/pipe_straight.png", self.get_pipe_rotation(pipe_type)
             elif pipe_type in PIPE_TYPES["corner"]:
@@ -91,7 +91,6 @@ init python:
                         return False
             return True
 
-# Экран
 screen pipe_game():
     modal True
     
@@ -113,7 +112,6 @@ screen pipe_game():
         vbox:
             spacing 10
             
-            # Сетка
             grid game.size game.size:
                 spacing 0
                 for i in range(game.size):
