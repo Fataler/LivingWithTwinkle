@@ -1,6 +1,12 @@
 transform bandit_c_left:
-    xalign 0
+    xalign -0.2
     yalign 1.0
+
+transform fel_table_pos:
+    xpos 0
+
+transform fel_board_pos:
+    xpos -100
 #common
 transform c_left:
     xalign 0.1
@@ -57,26 +63,40 @@ transform enter_c_left(time=2.0, from_right=False):
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
-transform enter_c_right(time=2.0, from_left=False):
+transform enter_c_right(time=2.0, from_left=False, xalign=0.95):
     xpos (-1000 if from_left else 2000)
     parallel:
-        ease time xalign 0.95
+        ease time xalign xalign
     parallel:
         block:
             ease 0.2 yoffset 20
             ease 0.2 yoffset 0
             repeat (int(time * 2.5))
 
-transform move_step(xoffset=-100):
+transform step_up(steps=1, step_time=0.3, step_size=10):
+    yoffset 0
+    ease step_time yoffset step_size
+    ease step_time yoffset 0
+    repeat steps
+
+transform move_step(xoffset=-100, time=0.3, steps = 1):
     parallel:
         xoffset 0
-        linear 0.3 xoffset xoffset
+        linear time xoffset xoffset
     parallel:
         yoffset 0
-        ease 0.3/2 yoffset 10
-        ease 0.3/2 yoffset 0
-        repeat 2
+        ease time yoffset 10
+        ease time yoffset 0
+        repeat steps
 
+transform background_step(start=-1920, offset=100, time=0.5, yoffset=0):
+    parallel:
+        xpos start
+        linear time xpos (start + offset)
+    parallel:
+        yoffset 0
+        ease time yoffset yoffset
+        ease time yoffset 0
 
 # Вход персонажа справа
 # transform enter_right(time=2.0, xalign = 0.8):
@@ -134,7 +154,7 @@ transform flip:
 transform flip_back:
     xzoom 1
 
-transform put_down(speed=0.5, offset=-10):
+transform put_down(speed=0.2, offset=-10):
     parallel:
         linear speed xoffset offset
         linear speed xoffset 0

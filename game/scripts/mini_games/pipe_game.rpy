@@ -110,6 +110,7 @@ screen pipe_game():
         ypadding 20
         
         vbox:
+            yoffset 14
             spacing 10
             
             grid game.size game.size:
@@ -146,6 +147,7 @@ screen pipe_game():
                 xalign 0.5
                 
                 textbutton "Сдаться":
+                    text_size 60
                     action Return(False)
 
                 # textbutton "Победить":

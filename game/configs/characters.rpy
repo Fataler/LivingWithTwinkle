@@ -106,102 +106,240 @@ image fel_fire:
     pause 0.13
     repeat
 
+
+image fel_fire_fast:
+    "images/characters/felix/fire_01.png"
+    pause 0.06
+    "images/characters/felix/fire_02.png"
+    pause 0.06
+    "images/characters/felix/fire_03.png"
+    pause 0.06
+    repeat
+
 image fel_table_fire:
-    "images/characters/felix_table/fire_01.png"
+    "images/characters/felix/table_fire_01.png"
     pause 0.13
-    "images/characters/felix_table/fire_02.png"
+    "images/characters/felix/table_fire_02.png"
     pause 0.13
-    "images/characters/felix_table/fire_03.png"
+    "images/characters/felix/table_fire_03.png"
     pause 0.13
     repeat
 
+image fel_fire_long:
+    "images/characters/felix/fo2_1.png"
+    pause 0.13
+    "images/characters/felix/fo2_2.png"
+    pause 0.13
+    "images/characters/felix/fo2_3.png"
+    pause 0.13
+    repeat
+
+# Композитные изображения для fel_table
+image fel_table_composite_01 = Composite((970, 1080),
+    (0, 0), "images/characters/felix/f_l_15.png",
+    (0, 0), "images/characters/felix/f_l_19.png")
+
+image fel_table_composite_02 = Composite((970, 1080),
+    (0, 0), "images/characters/felix/f_r_8.png",
+    (0, 0), "images/characters/felix/f_l_16.png")
+
+image fel_table_composite_03 = Composite((970, 1080),
+    (0, 0), "images/characters/felix/f_r_8.png",
+    (0, 0), "images/characters/felix/f_l_17.png")
+
+image fel_table_composite_03_fire = Composite((970, 1080),
+    (0, 0), "images/characters/felix/f_r_8.png",
+    (0, 0), "images/characters/felix/f_l_18.png")
+
+image fel_table_composite_04 = Composite((970, 1080),
+    (0, 0), "images/characters/felix/f_r_9.png",
+    (0, 0), "images/characters/felix/f_l_16.png")
+
+image fel_table_composite_05 = Composite((970, 1080),
+    (0, 0), "images/characters/felix/f_r_9.png",
+    (0, 0), "images/characters/felix/f_l_16.png")
+
 layeredimage fel_table:
     always:
-        "images/characters/felix_table/gg_base.png"
-    always:
-        "fel_table_fire"
-
-    group hands:
-        attribute base_hands default:
-            "images/characters/felix_table/gg_hands.png"
-    
-    group face:
-        attribute base_face default:
-            "images/characters/felix_table/gg_face_norm.png"
-
-layeredimage fel:
-    always:
-        "images/characters/felix/gg_main.png"
-    always:
-        "fel_fire"
-
-    group hands:
-        attribute base_hands default:
-            "images/characters/felix/gg_hands.png"
-    
-    group face:
-        attribute base_face default:
-            "images/characters/felix/gg_face_norm.png"
-
-layeredimage f:
-    # group base:
-    #     attribute base default
+        "images/characters/felix/f_b_2.png"
 
     group pose:
-        attribute 01:#table_default default:
-            "images/characters/felix/f01.png"
-        attribute 02:#table_write:
-            "images/characters/felix/f02.png"
-        attribute 03:#table_panic:
-            "images/characters/felix/f03.png"
-        attribute 04:#table_think:
-            "images/characters/felix/f04.png"
-        attribute 05:#table_point:
-            "images/characters/felix/f05.png"
+        attribute 01: #write
+            "fel_table_composite_01"
+        attribute 02:
+            "fel_table_composite_02"
+        attribute 03:
+            "fel_table_composite_03"
+        attribute 03_fire:
+            "fel_table_composite_03_fire"
+        attribute 04:
+            "fel_table_composite_04"
+        attribute 05:
+            "fel_table_composite_05"
+    
+    group head:
+        attribute head_base default:
+            "fel_table_fire"
+        attribute hat:
+            "images/characters/felix/gg_hat_table.png"
+
+# layeredimage fel:
+#     always:
+#         "images/characters/felix/gg_main.png"
+#     always:
+#         "fel_fire"
+
+#     group hands:
+#         attribute base_hands default:
+#             "images/characters/felix/gg_hands.png"
+    
+#     group face:
+#         attribute base_face default:
+#             "images/characters/felix/gg_face_norm.png"
+
+# изображения для Феликса
+image f_composite_06 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_1.png",
+    (0, 0), "images/characters/felix/f_l_1.png")
+
+image f_composite_07 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_2.png",
+    (0, 0), "images/characters/felix/f_l_1.png")
+
+image f_composite_08 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_2.png")
+
+image f_composite_11 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_3.png")
+
+image f_composite_12 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_4.png")
+
+image f_composite_13 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_5.png")
+
+image f_composite_22 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_6.png")
+
+image f_composite_24 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_7.png")
+
+image f_composite_25 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_3.png",
+    (0, 0), "images/characters/felix/f_l_8.png")
+
+image f_composite_10 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_4.png",
+    (0, 0), "images/characters/felix/f_l_9.png")
+
+image f_composite_14 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_4.png",
+    (0, 0), "images/characters/felix/f_l_10.png")
+
+image f_composite_16 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_5.png",
+    (0, 0), "images/characters/felix/f_l_6.png")
+
+image f_composite_17 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_5.png",
+    (0, 0), "images/characters/felix/f_l_11.png")
+
+image f_composite_18 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_5.png",
+    (0, 0), "images/characters/felix/f_l_12.png")
+
+image f_composite_19 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_5.png",
+    (0, 0), "images/characters/felix/f_l_13.png")
+
+image f_composite_21 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_6.png",
+    (0, 0), "images/characters/felix/f_l_14.png")
+
+image f_composite_23 = Composite((750, 1080),
+    (0, 0), "images/characters/felix/f_r_7.png",
+    (0, 0), "images/characters/felix/f_l_5.png")
+
+layeredimage f:
+    always:
+        "images/characters/felix/f_b_1.png"
+    # always:
+    #     "fel_fire"
+
+    group pose:
+        # attribute 01:#table_default default:
+        #     "images/characters/felix/f01.png"
+        # attribute 02:#table_write:
+        #     "images/characters/felix/f02.png"
+        # attribute 03:#table_panic:
+        #     "images/characters/felix/f03.png"
+        # attribute 04:#table_think:
+        #     "images/characters/felix/f04.png"
+        # attribute 05:#table_point:
+        #     "images/characters/felix/f05.png"
         attribute f02_fire: #table_fire:
             "images/characters/felix/f02_fire.png"
         
         attribute 06:#write:
-            "images/characters/felix/f06.png"
+            "f_composite_06"
         attribute 07:#think:
-            "images/characters/felix/f07.png"
+            "f_composite_07"
         attribute 08:#crossed default:
-            "images/characters/felix/f08.png"
+            "f_composite_08"
         attribute 11:#crossed_shy:
-            "images/characters/felix/f11.png"
+            "f_composite_11"
         attribute 12:#crossed_away:
-            "images/characters/felix/f12.png"
+            "f_composite_12"
         attribute 13:#crossed_shock:
-            "images/characters/felix/f13.png"
+            "f_composite_13"
         attribute 22:#crossed_angry:
-            "images/characters/felix/f22.png"
+            "f_composite_22"
         attribute 24:#crossed_smile:
-            "images/characters/felix/f24.png"
+            "f_composite_24"
         attribute 25:#crossed_laugh:
-            "images/characters/felix/f25.png"
+            "f_composite_25"
         
-        attribute 09:#relax:
-            "images/characters/felix/f09.png"
+        # attribute 09:#relax:
+        #     "images/characters/felix/f09.png"
         attribute 10:#scared:
-            "images/characters/felix/f10.png"
+            "f_composite_10"
         attribute 14:#angry:
-            "images/characters/felix/f14.png"
-        attribute 15:#scold:
-            "images/characters/felix/f15.png"
+            "f_composite_14"
+        # attribute 15:#scold:
+        #     "images/characters/felix/f15.png"
         attribute 16:#angry_leave:
-            "images/characters/felix/f16.png"
+            "f_composite_16"
         attribute 17:#horror:
-            "images/characters/felix/f17.png"
+            "f_composite_17"
         attribute 18:#terror:
-            "images/characters/felix/f18.png"
+            "f_composite_18"
         attribute 19:#tired:
-            "images/characters/felix/f19.png"
-        attribute 20:#glasses:
-            "images/characters/felix/f20.png"
+            "f_composite_19"
+        # attribute 20:#glasses:
+        #     "images/characters/felix/f20.png"
         attribute 21:#hands:
-            "images/characters/felix/f21.png"
+            "f_composite_21"
         attribute 23:#caught:
-            "images/characters/felix/f23.png"
+            "f_composite_23"
+
+    group head:
+        attribute head_base default:
+            "fel_fire"
+        attribute hat:
+            "images/characters/felix/gg_hat.png"
+        attribute fire_fast:
+            "fel_fire_fast"
+        attribute bald:
+            null
+        attribute long_hair:
+            "fel_fire_long"
+
 
 # Клементина
 image k_composite_01 = Composite((970, 1080),
@@ -299,9 +437,7 @@ layeredimage k:
             "k_composite_12_letters"
             
         attribute 07:#scared: # не нарисованны
-            "images/characters/klem/k07.png"
-        attribute 08:#power: # не нарисованны
-            "images/characters/klem/k08.png"
+            "images/characters/klem/k_b_18.png"
             
         attribute 10:#leave:
             "images/characters/klem/k_b_12.png"
@@ -323,7 +459,7 @@ layeredimage k:
         attribute 21:#laugh:
             "k_composite_21"
 
-        attribute 28:#laugh:
+        attribute 28:#paper in fire:
             "k_composite_28"
         attribute 29:#laugh:
             "k_composite_29"

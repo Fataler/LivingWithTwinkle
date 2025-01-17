@@ -13,6 +13,7 @@ image bg_pereulok  = "images/bg/pereulok.png"
 image bg_krishi    = "images/bg/krishi.png"
 
 image cg_1         = "images/cg_1.png"
+image cg_2         = "images/cg_2.png"
 
 image bg_bashnya_arrow:
     "images/bg/clock_arrow_1.png"
@@ -66,7 +67,32 @@ transform fade_to_light:
     linear 1.0 matrixcolor TintMatrix("#000000") * ColorMatrix(1.0, 1.0, 1.0, 0.0)
 
 # Цветные заглушки для титров
-image credits_img_1 = Solid("#FF0000")  # Красный
-image credits_img_2 = Solid("#00FF00")  # Зеленый
-image credits_img_3 = Solid("#0000FF")  # Синий
-image credits_img_4 = Solid("#FFFF00")  # Желтый
+image credits_img_1 = "images/credits/c1.png" # Красный
+image credits_img_2 = "images/credits/c2.png" # Зеленый
+image credits_img_3 = "images/credits/c3.png" # Синий
+image credits_img_4 = "images/credits/c4.jpg" # Желтый
+
+image paket_f = "images/characters/felix/m_1.png"
+image paket_k = "images/characters/felix/m_2.png"
+
+
+layeredimage letter:
+    group postion:
+        attribute 07:
+            "images/characters/felix/p_f07.png"
+        attribute 08:
+            "images/characters/felix/p_f08.png"
+        attribute 11:
+            "images/characters/felix/p_f08.png"
+        attribute 22:
+            "images/characters/felix/p_f08.png"
+        attribute 10:
+            "images/characters/felix/p_f10.png"
+        attribute 14:
+            "images/characters/felix/p_f10.png"
+        attribute 17:
+            "images/characters/felix/p_f17.png"
+        attribute 19:
+            "images/characters/felix/p_f17.png"
+        attribute 21:
+            "images/characters/felix/p_f21.png"

@@ -26,7 +26,7 @@ label boom_scene:
     $ _skipping = False
 
     scene roofs with fade:
-        zoom 1.3
+        zoom 1.1
         linear 2 zoom 1.0
     pause 2
 
@@ -41,9 +41,5 @@ label boom_scene:
         linear 0.1 zoom 1.1
         linear 0.1 zoom 1
         repeat 1
-
-    pause 0.6
-
-    pause 3
     $ _skipping = True
     return

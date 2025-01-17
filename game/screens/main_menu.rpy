@@ -29,7 +29,9 @@ screen main_menu():
 
     use navigation
 
-    use real_clock
+    add "gui/logo2.png" at menu_board_drop:
+        xalign 0.95
+    #use real_clock
 
     imagebutton idle "gui/chapel.png":#im.Scale("gui/chapel.png", 50, 50):
         action OpenURL('https://vk.com/chapel_jam')

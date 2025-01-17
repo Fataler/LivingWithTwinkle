@@ -2,8 +2,8 @@ image memo1 = "images/memo_1.png"
 image memo2 = "images/memo_2.png"
 image memo3 = "images/memo_3.png"
 
-define memo_time = 3.5
-define animation_time = 2.5
+define memo_time = 3
+define animation_time = 2
 
 transform memo_transform:
     yanchor 0.5

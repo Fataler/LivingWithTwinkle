@@ -58,7 +58,7 @@ init python:
             "Первые шаги",
             "Добро пожаловать в игру!",
             False,
-            "images/achievements/achievement.png"
+            "images/achievements/fire.jpg"
         ),
         # WOLF_HUNTER: Achievement(
         #     WOLF_HUNTER,
@@ -71,37 +71,43 @@ init python:
             FIRST_CHAPTER,
             "Первая глава",
             "Прочтите первую главу",
-            False
+            False,
+            "images/achievements/1.jpg"
         ),
         SECOND_CHAPTER: Achievement(
             SECOND_CHAPTER,
             "Вторая глава",
             "Прочтите вторую главу",
-            False
+            False,
+            "images/achievements/2.jpg"
         ),
         GAME_COMPLETED: Achievement(
             GAME_COMPLETED,
             "Третья глава",
             "Пройдите всю игру",
-            False
+            False,
+            "images/achievements/3.jpg"
         ),
         THANK_YOU: Achievement(
             THANK_YOU,
             "Посетить \"Об игре\"",
             "Спасибо за проявленный интерес!",
-            True
+            True,
+            "images/achievements/blue fire.jpg"
         ),
         PIPE_MASTER: Achievement(
             PIPE_MASTER,
             "Марио?",
             "Самостоятельно разберитесь с трубами",
-            True
+            True,
+            "images/achievements/pipe.jpg"
         ),
         HOLD_THE_DOOR: Achievement(
             HOLD_THE_DOOR,
             "Затворник",
             "Игнорируйте Клем до последнего",
-            True
+            True,
+            "images/achievements/fire.jpg"
         )
     }
 

@@ -191,7 +191,7 @@ screen achievement_popup(achievement):
         at achievement_popup_appear
         style "achievement_popup_frame"
         xalign 1.0
-        yalign 0.5
+        yalign 0.1
         
         vbox:
             spacing 15

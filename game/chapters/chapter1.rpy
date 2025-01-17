@@ -41,17 +41,16 @@ with dissolve
 
 $ unlock_achievement("first_steps")
 show bg_kabinet 
-show fel_table at c_left
-show kabinet_table at c_left
-with Dissolve(1)
+show fel_table 01 hat at fel_table_pos
+show kabinet_table at fel_table_pos
+show s at c_right, flip
+with Dissolve(2)
 play music music_felix
 
-pause 2.0
+pause 1.0
 
 F "Она уже приехала?"
-show s at enter_c_right(3), flip
 S "Да."
-#play sound sfx_oof
 F "И ты передал ей список?"
 S "Да."
 F "Хм…"
@@ -70,10 +69,11 @@ pause 2
 
 show s at flip, step_right(3.0, step_time=0.5)
 #show s at flip
-show f 02
+show fel_table 02
 F "Кстати,{w=0.5} я сейчас работаю над одной моделью, у неё скорость выше на семнадцать процентов, и мы могли бы…"
 show s at flip
 S "При всём уважении, сэр, но это перестанет входить в мои обязанности через {i}двадцать{/i} минут."
+show fel_table 04 hat
 F "А…{w=0.5} ну да…"
 S "Тогда на этом я прощаюсь."
 
@@ -85,6 +85,7 @@ show s at face_right, step_left(1.0)
 pause 0.5
 
 S "Вы жалеете, что дали мне отпуск?"
+show fel_table 02 hat
 F "Что? Нет."
 F "Я... {w=0.5} про смерть моей прежней служанки."
 show s at face_right, step_left(1.0)
@@ -97,11 +98,12 @@ F "..."
 pause 1
 F "Удачного тебе отпуска."
 
-show s normal at flip, step_right(20, step_time=0.25)
+show s normal at flip, step_right(20, step_time=0.25, step_size=100)
 pause 5
 hide s
 #секретарь вздыхает и уходит
 F "..."
+show fel_table 04 hat
 F "Как же сложно общаться с людьми…"
 stop music fadeout 4
 
@@ -112,45 +114,69 @@ scene bg_black with Dissolve(1)
 
 
 #к с ведром и шваброй плетётся по коридору и осматривается
-scene bg_koridor
-show k 01 at c_right, flip
+scene bg_koridor:
+    xpos -1920
+show k 01 at center, flip
 with Dissolve(1)
 play music music_trouble
 K "Не могу поверить, что я нашла эту работу на базаре…" 
 
-show k 01 at step_left(0):
-    linear 0.3 xoffset -50
+show bg_koridor at background_step(-1920, 200)
+
+show k 01 at step_up
+
 K "Это же самое таинственное и легендарное место в городе…"
 
-show k 02 at step_left(0):
-    linear 0.3 xoffset -100
+show bg_koridor at background_step(-1720, 200)
+
+show k 02 at step_up
+
 K "В основном, легенды жуткие… {w=0.5}Но всё же!"
-show k 03 at step_left(0):
-    linear 0.3 xoffset -150
+
+show bg_koridor at background_step(-1520, 200)
+
+show k 03 at step_up
+
+show bg_koridor at background_step(-1320, 200)
+
 K "И что это за карта?"
-show k 04 at step_left(0):
-    linear 0.3 xoffset -200
+
+show bg_koridor at background_step(-1120, 200)
+
+show k 04 at step_up
 #Нарисованная от руки карта башни, где на её вершине изображен злой демон
 K "Будто ребёнок рисовал."
+
+show bg_koridor at background_step(-920, 200)
+show k 04 at step_up
+
 #убирает карту
 K "Тот человек точно тут работает? А вдруг меня обманули?"
+show bg_koridor at background_step(-720, 200)
+show k 04 at step_up
+
 K "Хотя вёл он себя весьма по-хозяйски…"
 show k 03
 K "Ладно, в любом случае, доберусь до самой верхней комнаты и наверняка встречусь с хозяином!"
 show k 04
 K "Кто так нанимает прислугу, даже не встретившись с ней?!"
-show k 03
+show bg_koridor at background_step(-520, 200)
+show k 03 at step_up
 K "Да, притворюсь, что мою тут пол, а потом всё выскажу!"
-show k 04
+show bg_koridor at background_step(-320, 200)
+show k 04 at step_up
 K "Стоп. Мне же нужна эта работа."
-show k 03
+
+show bg_koridor at background_step(-120, 100)
+show k 03 at step_up, c_left with dissolve
 play sound sfx_knock
 K "О, а вот и нужная дверь!"
 #стучит в дверь
 
-show k 06 at jumping(2)
+show k 06 at jumping(2), center
 K "Кхм-кхм, пардоньте."
-
+show k 06 at step_left(20, 0.4, 200)
+pause 3
 scene bg_black with Dissolve(1)
 # тут как раз должна быть та длинная цг-шка, где на одном конце она открывает дверь, а на другом гг без шляпы.
 
@@ -158,7 +184,8 @@ scene bg_black with Dissolve(1)
 ################################################################################
 
 scene bg_kabinet
-show f 02 at c_left
+show fel_table 01 at fel_table_pos
+show kabinet_table at fel_table_pos
 show k at c_right
 with Dissolve(1)
 #кабинет
@@ -166,23 +193,26 @@ with Dissolve(1)
 show k 06 at enter_c_right, flip
 K "Я тут мыла пол, и…"
 #F в шоке вскрикивает
-show f 03 at jumping(4)
+show fel_table 03 at jumping(4)
 F "ЭЙ!"
-show f 03 at panic_run(2)
+show fel_table 03 at scared
 F_m "Где же шляпа?" #не знаю, как помечать мысли, может маленькой "м"?
-show f 03 at face_right
+show fel_table 03 at face_right
 # тут надо включить экшон, где он оборачивается в поисках шляпы, а она замечает огонь и бросается его тушить. В итоге он падает на пол и страдает от побочек своей силы.
-show k 10 at jumping(4)
+#show k 10 at jumping(4)
+
+play sound music_klementine
+#pause 2
+show k 07
 stop music fadeout 2
 pause 2
-play music music_klementine
 K "Огонь!"
 #тут думаю на спрайтах сделать — она подъезжает к нему и выливает ведро (или использует силу), а он заваливается за стол. 
 
 scene bg_black
 hide k
 hide f
-with Dissolve(2)
+with Dissolve(1)
 #window hide
 pause 2
 show bg_black
@@ -219,13 +249,15 @@ K 'Сразу бы так и сказали, что увлекаетесь "го
 show k 09 at flip_back
 K "А времени уже сколько, мне ещё обед готовить."
 #убегает
-show k 09 at step_right(20, 0.2)
-pause 4
+show k 09 at step_right(20, 0.2, 100)
+pause 3
 hide k 09
 
 pause 1
 #F встает — появляется его замученный спрайт за столом.
-show f 01 at c_left with dissolve
+show fel_table 04 at fel_table_pos
+show kabinet_table at fel_table_pos
+with dissolve
 F "Что сейчас произошло?"
 F_m "Следуя очевидной логике, эта женщина – новая помощница, нанятая секретарём."
 F_m "Скорее всего, кухарка. Да, зачем иначе она говорила бы про обед."
@@ -237,6 +269,7 @@ F "Заметка: {w=0.5}не доверять Секретарю найм пе
 F_m "Что она вообще тут делала? Она не получила список правил?"
 F_m "Неужели и здесь я больше не смогу расслабиться…"
 #громко вздыхает
+show fel_table 04 at step_up(step_size=5)
 F_m "Эх…"
 
 stop music fadeout 2
@@ -251,48 +284,50 @@ pause 1
 show k 03 at c_right, joy
 play music music_trouble
 K "Чего так громко вздыхаете?"
-show f 03
+show fel_table 03
 #sh 03
 F "Ай!"
 #натягивает шляпу
+show fel_table 03 hat with dissolve
 show k 11
 K "Ой, да чего я там у вас не видела."
-show f 02
+show fel_table 02
 #sh 01
 F "Это мера предосторожности."
 F "Зачем ты пришла? Хочешь закончить начатое?"
 show k 06
 K "Вообще-то да, я забыла..."
-show f 05
+show fel_table 05
 #sh 01
 show k 12
 F "Убить меня! Я так и знал!"
 show k 06
 K "Швабру."
-show f 02
+show fel_table 02
 #sh 01
 F "Что?"
 K "Швабру я забыла, говорю."
 F "А…"
-show f 04
+show fel_table 04
 show k 12
 F "Уверена, что не хочешь убить меня?"
 show k 06
 K "А зачем мне это? Кто тогда будет платить мне зарплату?"
-show f 02
+show fel_table 02
 #sh 01
 F "Звучит логично."
 show k 11
 K "Хотя.."
 show k 02
 K 'Какой убийца, ответил бы "да"?'
-show f 05
+show fel_table 05
 F "Значит, ты признаёшься!"
 F "Да?"
+show k 16
 K "Заплатите мне, тогда отвечу."
-show f 04
+show fel_table 04
 F "Сколько?"
-show f 03
+show fel_table 03
 show k 13
 F "Так, стоп!"
 show k 11
@@ -302,16 +337,25 @@ show k 10 at flip_back, exit_right(2)
 
 pause 4
 
-show f 04
+show fel_table 04
 F "..."
 F "Так, нужно провести расчёт."
 #d1
 #вскакивает со своего места, дергает за рычаг опускающий доску для мела
-show f 06
 play sound sfx_lever
+
+hide fel_table with dissolve
 pause 0.5
+
+
+show f 06 at flip:
+    xpos -1080
+    pause 1
+    linear 1 xpos 100
 show d1 at pause_menu_board_drop(-1080)
-pause 2
+
+pause 1
+
 play sound sfx_blackboard loop
 #o2
 F "Эта странная служанка… Она ведь уже призналась, что убийца?"
@@ -333,7 +377,7 @@ play sound sfx_lever
 show d1 at pause_menu_board_hide(-1080)
 pause 2
 hide d1
-show f 07
+show f 07 at flip_back
 F_m "Но спать в одном доме с трёхпроцентной убийцей…"
 F_m "Запру дверь. Да…"
 stop music fadeout 3
@@ -347,12 +391,12 @@ window show
 #Сцена 5. 
 ################################################################################
 call time_passed("На следующее утро") from _call_time_passed
-scene bg_ptichnik with Dissolve(1)
+scene bg_ptichnik2 with Dissolve(1)
 
-show f 09 at enter_c_left
+show f 24 at enter_c_left
 
 pause 0.5
-show f 09 at c_left
+show f 24 at c_left
 #sh 02
 #на следующее утро F в птичнике
 F "Сегодня у вас всё спокойно?"
@@ -431,7 +475,7 @@ show k 05 #flip
 K "Почему ничего, я окатила вас пеной."
 show k 02 #flip
 F "Да! Окатила… {w=0.5} меня…"
-show f 15
+show f 14
 F "Кстати, я ещё не снял с тебя подозрения!"
 show k 06 #flip
 K "Ага, понятно."
@@ -448,17 +492,21 @@ show k 11
 F "Ты ужасная! {w=0.5} Грубая. {w=0.5} Вопиющая…"
 show k 12 #flip
 K "И поэтому вы пойдёте и наймёте себе другую служанку?"
-show f 15 at angry, c_left
+show f 14 at angry, c_left
 F "Да! {w=0.5} Пойду! {w=0.5} И найму!"
-show f 15 #flip
+show f 14 #flip
 #sh 02
 #проходит к двери
-show f 17 #flip
+show f 17 at flip
+F "..."
+pause 1
 # тут сделать анимацию "не страшно"
-show f 18
+show f 18 at flip
 F "..."
 F_m "Я пойду…"
+show f 18 at step_left 
 F_m "Нет ничего страшного в том, чтобы пойти куда-то…"
+show f 18
 F_m "Мне совсем не страшно…"
 # несколько раз повторяет "не страшно"
 show f 17 at fear, c_left
@@ -469,6 +517,7 @@ show f 19
 F "Я не могу."
 F "Можешь оставаться."
 F "Но зарплату не повышу."
+show f 19 at exit_left
 stop music fadeout 2
 pause 1
 show bg_black with Dissolve(2)

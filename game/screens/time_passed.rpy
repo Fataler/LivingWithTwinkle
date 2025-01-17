@@ -3,6 +3,8 @@
 ## Ипользуется для перебивки между сценами.
 ##
 
+define run_time = 4
+
 transform show_screen_transform:
     on show:
         parallel:
@@ -15,7 +17,7 @@ transform loading_move:
     xzoom -1.0
     parallel:
         xpos -128 yalign 0.95  # начальная позиция слева
-        linear 7.0 xpos 1920+128   # движение вправо за 7 секунд
+        linear run_time xpos 1920+128   # движение вправо за 7 секунд
     parallel:
         block:
             ease 1 yoffset 20
@@ -91,7 +93,7 @@ screen time_passed(text="Прошло времени..."):
                 alpha 0.0
                 ease 2.0 alpha 1.0
 
-    timer 7.0 action Return()
+    timer run_time action Return()
 
 label time_passed(message = "Некоторое время спустя"):
     window hide
