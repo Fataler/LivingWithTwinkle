@@ -212,11 +212,7 @@ screen preferences():
     $ tooltip = GetTooltip()
 
     if tooltip:
-        $ mx = mouse_xy[0]
-        $ my = mouse_xy[1]
-        $ get_mouse()
-        
-        timer 0.1 repeat True action Function(get_mouse)
+        timer 0.033 repeat True action Function(get_mouse)
         $ mx = mouse_xy[0]
         $ my = mouse_xy[1]
         frame:
